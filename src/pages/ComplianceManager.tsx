@@ -1,0 +1,108 @@
+import CaseStudyLayout from '../components/CaseStudyLayout';
+import type { CaseStudyMeta } from '../types/casestudy';
+import AnimateOnScroll from '../components/AnimateOnScroll';
+
+export default function ComplianceManager() {
+  const meta: CaseStudyMeta = {
+    title: "From zero-to-MVP: unifying the compliance experience on Google Cloud",
+    subtitle: "Designing a unified platform for Google Cloud security.", // Fallback for SEO
+    heroImage: "/src/images/compliancemanager_hero.png", // Update with your real image path
+    // We are NOT passing role/team/tags here because we will render them manually below
+    role: "", 
+    team: [],
+    timeline: "",
+    tags: [] 
+  };
+
+  return (
+    <CaseStudyLayout meta={meta}>
+      
+      {/* --- 1. HERO SECTION (With Glow) --- */}
+      <div className="cs-hero-glow-wrapper">
+      <AnimateOnScroll>
+        <div className="container">
+          <img 
+            src={meta.heroImage} 
+            alt="Google Cloud Compliance Interface" 
+            className="cs-hero-img" 
+          />
+        </div>
+        </AnimateOnScroll>
+      </div>
+
+      <div className="container">
+        
+        {/* --- 2. HEADER BLOCK --- */}
+        <AnimateOnScroll>
+        <div className="cs-header-block">
+          <h1 className="cs-title">
+            From zero-to-MVP: unifying the <br />
+            compliance experience on Google Cloud
+          </h1>
+
+          {/* Tags */}
+          <div className="cs-tags-wrapper">
+            <span className="tag-primary">Experience strategy</span>
+            <span className="tag-primary">End-to-end design</span>
+            <span className="tag-primary">MVP</span>
+          </div>
+
+          {/* Date */}
+          <span className="cs-date">March 2024 - January 2025</span>
+
+          {/* Intro Paragraph */}
+          <p className="cs-intro-text">
+            How I shaped the UX strategy for Google Cloud’s first unified 
+            Compliance Manager service, unblocking $275M in enterprise deals.
+          </p>
+        </div>
+        </AnimateOnScroll>
+        {/* --- 3. SPLIT SECTION (Impact vs Meta) --- */}
+        <div className="cs-intro-split">
+          
+          {/* LEFT: Impact Card */}
+          <div className="impact-card">
+            <h3>Impact</h3>
+            <p>
+              As a lead designer for Compliance Manager, I owned the end-to-end 
+              user experience from initial strategy and vision to the final MVP.
+            </p>
+            <ul>
+              <li>Defined the UX vision that aligned 60+ stakeholders</li>
+              <li>Designed critical, user-centered features that unblocked $275M in enterprise and public sector sales</li>
+              <li>Delivered a cohesive MVP with over 100 customers onboarded</li>
+            </ul>
+          </div>
+
+          {/* RIGHT: Metadata Stack */}
+          <aside className="meta-stack">
+            
+            <div className="meta-block">
+              <h4>Role</h4>
+              <p>Product designer (product vision, prototyping, product strategy, conceptual design, research, end-to-end design)</p>
+            </div>
+
+            <div className="meta-block">
+              <h4>Team</h4>
+              <p>60+ cross-functional partners (design, engineering, product) across 2 service teams</p>
+            </div>
+
+            <div className="meta-block">
+              <h4>Links & press</h4>
+              <div className="meta-links">
+                <a href="#" className="text-link">Product website</a>
+                <a href="#" className="text-link">TechCrunch</a>
+                <a href="#" className="text-link">Google Cloud Next</a>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+
+      </div>
+      
+      {/* ... Rest of your case study content ... */}
+
+    </CaseStudyLayout>
+  );
+}

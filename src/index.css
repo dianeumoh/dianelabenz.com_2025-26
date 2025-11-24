@@ -1,0 +1,1658 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  background-color: var(--color-surface-primary) !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* =====================================
+STYLE GUIDE AND THEME VARIABLES
+===================================== */
+:root {
+  --color-surface-primary: #F9F8ED;
+  --color-surface-secondary: #FDFCF5;
+  --color-content-primary: #333333;
+  /* body text/ charcoal */
+  --color-content-emphasized: #000000;
+  /* headings */
+  --color-content-tertiary: #6B6B6B;
+  /* secondary text */
+  --color-content-tags: #333333;
+  /* tertiary text */
+  --color-brand-accent-primary: #D8B9FF;
+  --color-brand-accent-secondary: #E3B1F8;
+  --color-brand-accent-tertiary: #892DDF;
+  --color-gradient-primary: linear-gradient(180deg, #E4B5F7 0%, #DFA0FB 53.85%, #E7D5F6 100%);
+  --color-gradient-secondary: linear-gradient(180deg, #F6F1EE 0%, #EDDEF3 8.65%, #E6D0F7 100%);
+  --color-gradient-tertiary: radial-gradient(50% 50% at 50% 50%, #FFF 0%, #F6F1EE 42.31%);
+  /* Swiper theme colors */
+  --swiper-theme-color: var(--color-brand-accent-primary);
+  --swiper-navigation-color: var(--color-content-primary);
+  --swiper-pagination-color: var(--color-brand-accent-tertiary);
+
+
+  /* Light Mode Glass */
+  --color-glass-bg: rgba(255, 255, 255, 0.25);
+  --color-glass-border: rgba(255, 255, 255, 0.3);
+
+  /* Header variables */
+  --color-header-bg: rgba(249, 248, 237, 0.2);
+  --color-header-border: rgba(0, 0, 0, 0.1);
+  --color-link-hover: var(--color-brand-accent-tertiary);
+  --color-nav-link-active: var(--color-content-emphasized);
+
+  /* font families*/
+  --font-afacad: 'Afacad', sans-serif;
+  --font-acorn: 'Acorn', sans-serif;
+  --font-family-display: 'Acorn', serif;
+  --font-family-body: 'Afacad', sans-serif;
+
+  /* --- Font sizes: ACORN (for h1-h5 tags) --- */
+  --font-size-display-h1: 6.4rem;
+  /* 64px */
+  --font-size-display-h2: 4.8rem;
+  /* 48px */
+  --font-size-display-h3: 3.8rem;
+  /* 38px */
+  --font-size-display-h4: 3.0rem;
+  /* 30px */
+  --font-size-display-h5: 2.4rem;
+  /* 24px */
+
+  /* --- font sizes: AFACAD (for utility classes) --- */
+  --font-size-body-900: 9.155rem;
+  /* 91.55px */
+  --font-size-body-800: 7.324rem;
+  /* 73.24px */
+  --font-size-body-700: 5.859rem;
+  /* 58.59px */
+  --font-size-body-600: 4.688rem;
+  /* 46.88px */
+  --font-size-body-500: 3.75rem;
+  /* 37.5px */
+  --font-size-body-large: 3.0rem;
+  /* 30px */
+  --font-size-body-default: 2.4rem;
+  /* 24px */
+  --font-size-body-small: 1.92rem;
+  /* 19.2px */
+  --font-size-body-caption: 1.536rem;
+  /* 15.36px */
+
+  /* --- font weights --- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --color-surface-primary: #0C1117;
+  --color-surface-secondary: #151B23;
+  --color-content-primary: #F9F8ED;
+  --color-content-emphasized: #FDFCF5;
+  --color-content-tertiary: #8B949E;
+  --color-content-tags: #F9F8ED;
+  /* tertiary text */
+  --color-gradient-primary: linear-gradient(180deg, #7F76CA 0%, #0C1117 100%);
+  --color-gradient-secondary: linear-gradient(180deg, #0C1117 0%, #9E48E0 100%);
+  --color-gradient-tertiary: radial-gradient(50% 50% at 50% 50%, #151B23 0%, #0C1117 42.31%);
+  --color-flippable-card: rgba(11, 10, 10, 0.20);
+  /* Dark Mode Glass */
+  --color-glass-bg: rgba(11, 10, 10, 0.10);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  /* (example) */
+
+  /* Header variables for dark theme */
+  --color-header-bg: rgba(12, 17, 23, 0.2);
+  --color-header-border: rgba(255, 255, 255, 0.1);
+  --color-link-hover: var(--color-brand-accent-primary);
+  --color-nav-link-active: var(--color-content-emphasized);
+}
+
+/* =====================================
+GLOBAL/BASE STYLES
+===================================== */
+@font-face {
+  font-family: 'Acorn';
+  src: url('/fonts/Acorn-SemiBold.woff2') format('woff2'),
+    url('/fonts/Acorn-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+body {
+  margin: 0;
+  background-color: var(--color-surface-primary) !important;
+  color: var(--color-content-primary);
+  font-family: var(--font-family-body);
+  /* Default: Afacad */
+  font-size: var(--font-size-body-default);
+  /* Default: 24px */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-content-emphasized);
+  line-height: 1.2;
+  margin: 1em 0 0.5em 0;
+}
+
+/* Assigning the ACORN sizes to the semantic tags */
+h1 {
+  font-size: var(--font-size-display-h1);
+}
+
+/* 64px */
+h2 {
+  font-size: var(--font-size-display-h2);
+}
+
+/* 48px */
+h3 {
+  font-size: var(--font-size-display-h3);
+}
+
+/* 38px */
+h4 {
+  font-size: var(--font-size-display-h4);
+}
+
+/* 30px */
+h5 {
+  font-size: var(--font-size-display-h5);
+}
+
+/* 24px */
+
+/* =====================================
+UTILITY CLASSES
+===================================== */
+.text-hero-lg {
+  font-size: var(--font-size-body-900);
+}
+
+/* 91.55px */
+.text-hero-md {
+  font-size: var(--font-size-body-800);
+}
+
+/* 73.24px */
+.text-hero-sm {
+  font-size: var(--font-size-body-700);
+}
+
+/* 58.59px */
+.text-display-lg {
+  font-size: var(--font-size-body-600);
+}
+
+/* 46.88px */
+.text-display-md {
+  font-size: var(--font-size-body-500);
+}
+
+/* 37.5px */
+.text-large {
+  font-size: var(--font-size-body-large);
+}
+
+/* 30px */
+.text-small {
+  font-size: var(--font-size-body-small);
+}
+
+/* 19.2px */
+.text-caption {
+  font-size: var(--font-size-body-caption);
+}
+
+/* 15.36px */
+
+.text-link {
+  color: var(--color-brand-accent-tertiary);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--color-brand-accent-primary);
+}
+
+.text-link:active,
+.text-link:focus {
+  color: var(--color-brand-accent-primary);
+}
+
+.footer-external-link {
+  color: var(--color-brand-accent-tertiary);
+  text-decoration: underline;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-external-link:hover,
+.footer-external-link:focus-visible {
+  color: var(--color-brand-accent-primary);
+}
+
+/* =====================================
+REUSABLE COMPONENTS
+===================================== */
+
+.no-wrap-span {
+  white-space: nowrap;
+}
+
+.divider {
+  height: 0.1rem;
+  background-color: var(--color-brand-accent-primary);
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+/* Header */
+.site-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* This centers the pill */
+  padding: 1.5rem 0;
+  /* Space from top/bottom */
+  /* We make it "sticky" so it floats over content */
+  position: sticky;
+  top: 1rem;
+  /* Sits 1rem from the top */
+  z-index: 1000;
+}
+
+.header-container {
+  display: inline-flex;
+  /* Shrinks to fit content */
+  align-items: center;
+  gap: 2rem;
+
+  /* --- THE GLASS EFFECT --- */
+  background-color: var(--color-header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+
+  /* --- THE PILL SHAPE --- */
+  border-radius: 999px;
+  border: 0.1rem solid var(--color-glass-border);
+  /* Makes it a pill */
+  padding: 0.75rem 3rem;
+  /* Inner spacing */
+
+  /* --- SHADOW --- */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.main-nav {
+  display: flex;
+  font-size: var(--font-size-body-caption);
+  font-family: var(--font-family-body);
+  gap: 2.5rem;
+  /* Space between links */
+}
+
+.main-nav a {
+  font-weight: 500;
+  color: var(--color-content-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--color-link-hover);
+}
+
+.main-nav a.active-link {
+  color: var(--color-nav-link-active);
+  font-weight: 600;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* Logo styles */
+.header-logo-link {
+  text-decoration: none;
+  color: var(--color-content-emphasized);
+  font: var(--font-acorn);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-display-h5);
+  transition: color 0.2s ease;
+}
+
+.header-logo-link:hover {
+  color: var(--color-link-hover);
+}
+
+.logo-text {
+  display: block;
+}
+
+/* Dark mode toggle styles */
+
+/*
+ * 1. The main toggle button (the outer pill)
+ * This holds the icons and the sliding pill.
+ */
+.dark-mode-toggle {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  /* This is the anchor for the sliding pill */
+
+  /* Sizing (you can adjust these) */
+  width: 70px;
+  height: 34px;
+  padding: 4px;
+
+  /* Style */
+  background-color: var(--color-surface-secondary);
+  /* Your light purple/grey */
+  border: 1px solid var(--color-brand-accent-primary);
+  border-radius: 999px;
+  /* Pill shape */
+  cursor: pointer;
+
+  /* This prevents a weird flash on click */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * 2. The emoji icon wrappers
+ */
+.dark-mode-toggle .icon-wrapper {
+  /* Sizing (must fit inside the toggle) */
+  width: 2.6rem;
+  height: 2.6rem;
+
+  /* Emoji text styles */
+  font-size: 2rem;
+  user-select: none;
+  /* Makes it not selectable */
+
+  /* Centering the emoji inside its box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Icons render behind the sliding pill */
+  position: relative;
+  z-index: 1;
+  /* Lower than the pill's z-index of 5, so pill appears on top */
+  pointer-events: none;
+  /* Allow clicks to pass through to button */
+}
+
+/*
+ * 3. The sliding white pill
+ */
+.toggle-pill {
+  position: absolute;
+  z-index: 5;
+  /* Position it over the first icon */
+  top: 0.4rem;
+  left: 0.4rem;
+
+  /* Sizing (same as the icon wrapper) */
+  width: 2.6rem;
+  height: 2.6rem;
+
+  /* Style */
+  background-color: var(--color-brand-accent-secondary);
+  border: 3px solid var(--color-brand-accent-primary);
+  border-radius: 50%;
+  /* Perfect circle */
+
+  /* This is the animation! */
+  transition: transform 0.3s ease;
+}
+
+/*
+ * 4. The "Dark Mode" state
+ * This moves the pill when the <html> tag has
+ * data-theme="dark".
+ */
+[data-theme="dark"] .toggle-pill {
+  /* This moves the pill to the right.
+    (70px width) - (2 * 4px padding) - (26px pill width) = 36px
+  */
+  transform: translateX(3.6rem);
+}
+
+/*End of Header */
+
+
+
+.button-primary {
+  /* Layout */
+  display: inline-flex;
+  padding: 0.75rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+
+  /* Style */
+  border-radius: 6.25rem;
+  background: var(--color-content-primary);
+  border: 1px solid var(--color-content-tertiary);
+  color: var(--color-surface-primary) !important;
+
+  transition: background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button-primary:hover {
+  background: var(--color-gradient-secondary);
+  color: var(--color-content-primary) !important;
+  border: 1px solid var(--color-brand-accent-primary);
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tag-primary {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 4rem;
+  border: 0.125rem solid var(--color-content-primary);
+  color: var(--color-content-tags);
+  font-size: var(--font-size-body-small);
+}
+
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  align-items: flex-start;
+  gap: 2rem;
+  flex: 1;
+  height: 100%;
+  border-radius: 1.5rem;
+  /* --- The Glass Effect --- */
+
+  /* 1. The blur (This blurs the section's background) */
+  backdrop-filter: blur(1.6rem);
+  -webkit-backdrop-filter: blur(1.6rem);
+  /* Safari support */
+
+  /* 2. The transparent color */
+  background-color: var(--color-glass-bg);
+  /* Semi-transparent white */
+
+  /* 3. The subtle "edge" */
+  border: 0.1rem solid var(--color-glass-border);
+
+  /* ... (rest of your padding/border-radius) ... */
+
+  /* Use flex to stack the icon, text, and attribution */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Space between items */
+}
+
+.quote-card p {
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-primary);
+}
+
+/* Quote Card Avatar & Text*/
+.quote-attribution {
+  display: flex;
+  flex-direction: row;
+  /* Puts items side-by-side */
+  align-items: center;
+  /* Vertically centers them */
+  padding-top: 2rem;
+  gap: 1.2rem;
+  /* Space between avatar and text block */
+  margin: 0;
+}
+
+.quote-avatar {
+  /* Your <img> tag for the avatar */
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Quote Card Wrapper for Role & Name */
+.quote-attribution-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-attribution-info .name {
+  font-size: var(--font-size-body-default);
+  color: var(--color-text-primary);
+}
+
+.quote-attribution-info .title {
+  font-size: var(--font-size-body-small);
+  color: var(--color-text-secondary);
+}
+
+
+.quote-card footer {
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+}
+
+
+/* =====================================
+REUSABLE COMPONENTS (Additions)
+===================================== */
+/* Flippable Card */
+/* * 1. The Container: Sets up the 3D "stage"
+ */
+.flippable-card-container {
+  /* This is ESSENTIAL. It defines the "depth" of the 3D space.
+     Bigger number = less extreme 3D effect.
+  */
+  perspective: 100rem;
+
+  /* You must define a size for your card */
+  width: 35rem;
+  height: 52rem;
+  cursor: pointer;
+}
+
+/*
+ * 2. The Card: The part that actually flips
+ */
+.flippable-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+
+  /* This is ESSENTIAL. It tells the browser that
+     the children of this element live in 3D space.
+  */
+  transform-style: preserve-3d;
+}
+
+/*
+ * 3. The Faces (Front and Back):
+ * This is where your card styling goes.
+ */
+.flippable-card-front,
+.flippable-card-back {
+  /* This makes them stack on top of each other */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  /* This is ESSENTIAL. It hides the "back" of the
+     element when it's facing away from you.
+  */
+  backface-visibility: hidden;
+
+  /* --- YOUR CARD STYLING GOES HERE --- */
+  /* This is where you put your border-radius,
+     padding, and the "glassmorphism" styles.
+  */
+  backdrop-filter: blur(1.6rem);
+  -webkit-backdrop-filter: blur(1.6rem);
+  background-color: var(--color-glass-bg);
+  border: 0.1rem solid var(--color-glass-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-radius: 2.5rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  /* Good for card content */
+}
+
+/*
+ * 4. Pre-flip the back face
+ */
+.flippable-card-back {
+  /* This flips it 180 degrees so it's
+     "facing backward" at the start.
+  */
+  transform: rotateY(180deg);
+
+  /* (Optional) Style your description text */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@keyframes jiggle {
+
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-2deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+}
+
+
+/*
+ * 5. The Jiggle Animation
+ */
+.flippable-card-container:hover .flippable-card:not(.is-flipped) {
+  animation: jiggle 0.3s ease;
+}
+
+.flippable-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+
+/* =====================================
+LAYOUTS AND PAGE SECTIONS
+===================================== */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.greeting-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.greeting-text {
+  /* Layout */
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  align-items: center;
+  min-width: 18rem;
+  min-height: 8rem;
+  margin-right: 0.5rem;
+  gap: 1rem;
+  /* Style */
+  border-radius: 6.25rem;
+  border: 0.25rem solid var(--color-brand-accent-secondary);
+  background: var(--color-brand-accent-tertiary);
+  color: #FFF;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 2.5rem;
+  /* Match your h1's font size */
+  background-color: var(--color-purple);
+  /* Or your text color */
+  animation: blink 1s infinite;
+}
+
+/*
+ * 4. The simple blink animation.
+ */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero-title-line-one {
+  white-space: nowrap;
+}
+
+.full-bleed-section {
+  width: 100%;
+  background: var(--color-surface-primary);
+}
+
+.full-bleed-section-gradient {
+  background: var(--color-gradient-tertiary);
+  width: 100%;
+}
+
+.hero-section {
+  display: flex;
+  padding: 6rem 20rem;
+  gap: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--color-surface-primary);
+}
+.hero-section-text {
+  width:50%
+}
+
+.profile-photo-wrapper {
+  position: relative;
+  display: inline-block;
+  width:50%
+}
+
+.profile-photo {
+  display: block;
+  max-width: 70%;
+  height: auto;
+}
+
+.profile-badge {
+  position: absolute;
+  bottom: 0%;
+  right: 22%;
+  z-index: 10;
+  width: 20%;
+  height: auto;
+}
+
+.hero-section-text {
+  max-width: 70rem;
+  padding-right: 1rem;
+}
+
+/* scrolling marquee section */
+.marquee-container {
+  overflow: hidden;
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  background: var(--color-brand-accent-tertiary);
+  color: #FFDFE7;
+}
+
+.marquee-track {
+  display: flex;
+  font-family: var(--font-family-display);
+  text-transform: uppercase;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    /* This moves the track to the left by the
+      exact width of ONE of your content lists (50%).
+      This creates the seamless loop.
+    */
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content {
+  display: flex;
+  /* This ensures the <li> items go in a row */
+  list-style: none;
+  margin: 0rem;
+  padding: 0;
+  white-space: nowrap;
+
+  /* Prevents text from wrapping */
+  & li {
+    margin-right: 1rem;
+  }
+}
+
+/* Featured projects section */
+.featured-projects-section {
+  display: flex;
+  padding: 3.5rem 20rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.25rem;
+  align-self: stretch;
+  background: var(--color-gradient-primary);
+  width: 100%;
+}
+
+.case-study-card {
+  /* Layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3rem;
+  align-items: center;
+  gap: 1.5rem;
+  align-self: stretch;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  /* Style */
+  border-radius: 40px;
+  border: 1px solid #000;
+  background: var(--color-surface-secondary);
+}
+
+.case-study-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex: 1;
+  height: 100%;
+}
+
+.case-study-card-content h3 {
+  margin: 0;
+}
+
+.case-study-card-logo {
+  max-width: 22rem;
+  display: flex;
+}
+
+
+
+.case-study-card-image {
+  flex: 1;
+  max-width: 56.4rem;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag-primary-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* High Fives (Quotes) section */
+
+.high-fives-section-full-bleed {
+  background: var(--color-gradient-tertiary);
+  width: 100%;
+}
+
+.high-fives-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-gradient-tertiary);
+  max-width: 1900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8rem 20rem;
+  gap: 6rem;
+}
+
+.high-fives-copy {
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  color: var(--color-content-primary);
+}
+
+.high-fives-copy h2 {
+  margin: 0;
+}
+
+.high-fives-copy p {
+  margin: 0;
+}
+
+/* Quote Carousel */
+.carousel-wrapper {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-wrapper .swiper {
+  width: 100%;
+  padding-bottom: 3rem;
+  /* Space for pagination */
+}
+
+.carousel-wrapper .swiper-slide {
+  height: auto;
+  padding-bottom: 1.5rem;
+  /* Prevent overlap with dots */
+}
+
+/* --- Carousel Pagination Dots --- */
+
+/* This targets the container for the dots */
+.swiper-pagination {
+  position: relative;
+  /* Move it below the cards */
+  margin-top: 2rem;
+}
+
+/* This is the dot itself */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #D9D9D9;
+  /* Inactive color */
+  opacity: 1;
+}
+
+/* This is the *active* dot */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-brand-accent-primary);
+  /* Active color */
+}
+
+/* Extra Curriculars Section */
+.extra-curriculars-section-full-bleed {
+  padding: 3.5rem 20rem;
+  background: var(--color-gradient-secondary);
+  width: 100%;
+}
+
+.extra-curriculars-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.extra-curriculars-section-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.extra-curriculars-row {
+  display: flex;
+  flex-direction: row;
+  max-width: 800px;
+  gap: 2rem;
+}
+
+.extra-curriculars-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex: 1;
+  height: 100%;
+}
+
+.extra-curriculars-card-content h3 {
+  font-size: var(--font-size-display-h4);
+}
+
+/* About Section */
+.about-section {
+  display: flex;
+  justify-content: center;
+  padding: 8rem 20rem;
+  max-width: 1900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-section-content h1 {
+  margin: 0;
+  padding-bottom: 2rem;
+  font-size: var(--font-size-display-h2);
+}
+.about-section-content h2 {
+  margin-top: 3rem;
+  font-size: var(--font-size-display-h4);
+  
+}
+.about-section-image {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fun Facts Section (About Page) */
+
+.fun-facts-section {
+  display: flex;
+  background: var(--color-gradient-secondary);
+  padding: 2rem 20rem 8rem 20rem;
+  width: 100%;
+}
+
+.about-section-fun-facts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+
+}
+
+.fun-facts-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.fun-fact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 30rem;
+}
+
+.fun-fact-card p {
+  font-size: var(--font-size-body-caption);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-tertiary);
+}
+
+.fun-fact-card-image {
+  width: 100%;
+  height: auto;
+}
+
+.fun-fact-card-image img,
+.fun-fact-card-image video {
+  width: 30rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 2rem;
+  display: block;
+}
+
+.fun-fact-card-image video {
+  background-color: var(--color-surface-secondary);
+}
+
+/* About Profile Swiper with Cards Effect */
+.about-profile-swiper-container {
+  width: 100%;
+  max-width: 50rem;
+  height: 60rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.about-profile-swiper {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.about-profile-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: var(--color-surface-secondary);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 0.1rem solid var(--color-glass-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-profile-slide:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.about-profile-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.about-profile-slide:hover img {
+  transform: scale(1.02);
+}
+
+/* Cards Effect Customization */
+.about-profile-swiper .swiper-slide-shadow-left,
+.about-profile-swiper .swiper-slide-shadow-right {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+.about-profile-swiper .swiper-slide-shadow-right {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+}
+
+/* Ensure cards effect works smoothly */
+.about-profile-swiper.swiper {
+  overflow: visible;
+}
+
+/* Selected Works Section */
+.selected-works-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 3.5rem 20rem;
+  max-width: 1800px;
+}
+
+.selected-works-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 6rem;
+  max-width: 65rem;
+}
+
+.selected-works-section-header h1 {
+  margin-bottom: 0.6rem;
+  font-size: var(--font-size-display-h2);
+}
+
+.selected-works-section-header p {
+  margin: 0;
+}
+
+.selected-works-section-subtitle {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-tertiary);
+  gap: 1rem;
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.selected-works-grid {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 10rem;
+  margin-bottom: 6rem;
+}
+
+.selected-works-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.selected-works-card-image {
+  width: 56.4rem;
+  height:42rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-content-tertiary);
+}
+
+.selected-works-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 56rem;
+}
+
+.selected-works-card-content h3 {
+  font-size: var(--font-size-display-h4);;
+}
+
+.selected-works-card-content p {
+  font-size: var(--font-size-body-default);
+  font-weight: var(--font-weight-regular);
+}
+
+/* =====================================
+   SPECIFIC CASE STUDY STYLES
+   ===================================== */
+
+   .case-study-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers any flex children */
+  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 20rem;
+}
+
+/* --- 1. The Hero Image with Purple Glow --- */
+.cs-hero-glow-wrapper {
+  padding: 4rem 0; /* The space for the glow */
+  margin-bottom: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  background:transparent;
+}
+
+.cs-hero-glow-wrapper::before {
+  content: "";
+  position: absolute;
+  
+  /* Position the glow */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background: var(--color-gradient-primary); 
+  filter: blur(80px); /* Heavy blur to make it gaseous */
+  opacity: 0.5;       /* Soften it so it's not too overwhelming */
+  z-index: -1;        /* Send it behind the image */
+  
+  /* Optional: Constrain the glow so it doesn't bleed too far */
+  transform: scale(0.8); 
+  border-radius: 100%; /* Makes the glow rounded/organic */
+}
+
+
+
+.cs-hero-glow-wrapper .container {
+  width: 100%;
+  max-width: 1440px;
+}
+.cs-hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: block;
+}
+
+/* --- 2. The Intro Header (Title & Tags) --- */
+.cs-header-block {
+  max-width: 90rem;
+  margin-bottom: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display-h2); /* Adjust based on look */
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.cs-tags-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.cs-date {
+  color: var(--color-content-tertiary);
+  font-size: var(--font-size-body-small);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.cs-intro-text {
+  font-size: var(--font-size-body-large);
+  color: var(--color-content-primary);
+  max-width: 75ch;
+  margin-bottom: 4rem;
+}
+
+/* --- 3. The "Split" Section (Impact vs. Metadata) --- */
+.cs-intro-split {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: Stacked */
+  gap: 4rem;
+  margin-bottom: 8rem;
+}
+
+@media (min-width: 900px) {
+  .cs-intro-split {
+    /* Desktop: 60% Impact, 40% Metadata */
+    grid-template-columns: 1.5fr 1fr; 
+    align-items: start;
+  }
+}
+
+/* Left Column: The Purple Impact Card */
+.impact-card {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-surface-secondary);
+  border: 0.4rem solid var(--color-brand-accent-primary);
+  color: var(--color-content-primary);
+  border-radius: 2rem;
+  padding: 3rem;
+  backdrop-filter: blur(16px);
+}
+
+.impact-card::before {
+  content: "";
+  position: absolute;
+  
+  /* 3. Make the glow larger than the card ("Spill out") */
+  inset: -20px; /* Extends 20px outwards in all directions */
+  
+  /* 4. The Gradient */
+  background: var(--color-gradient-primary);
+  
+  /* 5. The Blur */
+  filter: blur(30px);
+  opacity: 0.4;
+  z-index: -1; /* Send behind the card */
+  
+  /* Match the card's shape roughly */
+  border-radius: inherit;
+}
+
+.impact-card h3 {
+  font-size: var(--font-size-body-large);
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.impact-card ul {
+  padding-left: 1.5rem;
+  margin: 0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.impact-card li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  text-indent: -1rem;
+  padding-left: 1.5rem;
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+/* Right Column: The Metadata Stack */
+.meta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.meta-block h4 {
+  font-size: var(--font-size-body-default);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.meta-block p {
+  margin: 0;
+  font-size: var(--font-size-body-default);
+  color: var(--color-content-primary);
+  line-height: 1.6;
+}
+
+.meta-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Footer */
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 3.5rem 20rem 3.5rem 20rem;
+  gap: 10rem;
+  max-width: 1900px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--color-gradient-tertiary);
+}
+
+.footer-container h5 {
+  font-size: var(--font-size-body-small);
+  color: (var--color-content-primary);
+  font-family: var(--font-family-body);
+}
+
+.footer-container p {
+  font-size: var(--font-size-body-small);
+}
+
+.footer-links-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8rem;
+}
+
+.footer-copyright-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem 20rem 3.5rem 20rem;
+  gap: 2rem;
+  max-width: 1900px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--color-gradient-tertiary);
+}
+
+.footer-copyright {
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-tertiary);
+  margin-top: 8rem;
+}
+
+/* =====================================
+   PAGE TRANSITIONS (Color Swipe Reveal)
+   ===================================== */
+
+/* 1. The view-transition-group provides the colored background for the swipe */
+::view-transition-group(root) {
+  background-color: var(--color-brand-accent-primary);
+}
+
+/* 2. Old page stays in place and gets covered by the swipe */
+::view-transition-old(root) {
+  animation: cover-old 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* 3. New page is revealed from underneath as swipe passes */
+::view-transition-new(root) {
+  animation: reveal-new 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* 4. Old page stays in place, just gets clipped/masked as swipe passes */
+@keyframes cover-old {
+  0% {
+    clip-path: inset(0 0 0 0%);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+/* 5. New page is revealed from left to right (starts hidden, becomes visible) */
+@keyframes reveal-new {
+  0% {
+    clip-path: inset(0 100% 0 0%);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0%);
+  }
+}
+
+/* ACCESSIBILITY: 
+ * Disable animations for users who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+
+/* =====================================
+MEDIA QUERIES (Responsive)
+===================================== */
+
+/* This targets all screens 768px wide or smaller */
+@media (max-width: 1024px) {
+  .high-fives-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 3.5rem 4rem;
+    gap: 4rem;
+  }
+
+  .high-fives-copy {
+    max-width: none;
+    text-align: center;
+  }
+
+  .carousel-wrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .case-study-card {
+    /* This stacks the content and image vertically */
+    flex-direction: column;
+    height: auto;
+    /* less padding on mobile */
+    padding: 2rem;
+  }
+
+  .case-study-card-image {
+    order: -1;
+    /* This moves image before the content */
+  }
+
+  .high-fives-section {
+    padding: 3rem 2rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .footer-links-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+/*
+ * ACCESSIBILITY:
+ * This media query targets users who have
+ * "Prefer reduced motion" turned ON.
+ */
+ @media (prefers-reduced-motion: reduce) {
+  /*
+   * 1. Turn off all our transitions
+   */
+  .fade-in-section {
+    transition: none;
+  }
+
+  /*
+   * 2. Make the sections visible by default
+   * (This overrides the "hidden" state)
+   */
+  .fade-in-section:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+}
