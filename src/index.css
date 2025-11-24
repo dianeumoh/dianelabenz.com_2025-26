@@ -1283,18 +1283,26 @@ LAYOUTS AND PAGE SECTIONS
    SPECIFIC CASE STUDY STYLES
    ===================================== */
 
-   .case-study-main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* This centers any flex children */
-  }
+.case-study-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers any flex children */
+}
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 3.5rem 20rem;
+}
+
+.cs-image-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 3.5rem 20rem;
 }
 
@@ -1474,6 +1482,110 @@ LAYOUTS AND PAGE SECTIONS
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+/* Case Study Text Blocks */
+.cs-text-container {
+max-width: 75ch;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 1.5rem;
+ padding-right: 1.5rem;
+ align-items: flex-start;
+}
+
+.cs-text-container h3 {
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-content-tertiary);
+  margin-bottom: 0;
+}
+.cs-text-container > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Case Study Image Gallery */
+/* =====================================
+   CS IMAGE GROUP (Gallery)
+   ===================================== */
+
+/* 1. The Full Bleed Background */
+.cs-image-group-section {
+  /* Use your theme gradient, or a specific one for this effect */
+  background: linear-gradient(180deg, #E0F7FA 0%, #E1F5FE 100%); /* Example: Soft Blue/Green */
+  /* Or use your variable: background: var(--color-gradient-secondary); */
+  
+  padding: 6rem 0; /* Lots of breathing room top/bottom */
+  margin-bottom: 6rem;
+}
+
+/* 2. The Grid Container */
+.cs-image-grid {
+  display: grid;
+  gap: 2rem; /* Space between images */
+  align-items: start; /* Aligns images to the top if they have different heights */
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* 3. Responsive Grid Logic */
+
+/* Mobile: Always stack them 1 per row */
+.cs-image-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Desktop: Switch based on data-count */
+@media (min-width: 768px) {
+  
+  /* If 2 images: 50% / 50% */
+  .cs-image-grid[data-count="2"] {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* If 3 images: 33% / 33% / 33% */
+  .cs-image-grid[data-count="3"] {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  /* If 1 image: Centered and constrained width */
+  .cs-image-grid[data-count="1"] {
+    grid-template-columns: 1fr;
+    max-width: 80%; /* Don't let a single screenshot get TOO massive */
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Update the grid item to stack image and text */
+.cs-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Space between image and its specific label */
+}
+
+/* Style the individual image caption */
+.cs-item-caption {
+  font-size: var(--font-size-body-small);
+  color: var(--color-content-primary);
+  font-weight: 600; /* Make it slightly bold to differentiate */
+  display: block;
+}
+
+/* Center text if it's a gallery (optional, but looks good for Before/After) */
+.cs-image-grid[data-count="2"] .cs-item-caption,
+.cs-image-grid[data-count="3"] .cs-item-caption {
+  text-align: left; /* Or center, based on your preference */
+}
+
+/* 4. Image styling inside grid */
+.cs-grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Optional: Make them look like the screenshot */
+  border-radius: 1rem; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
 /* Footer */

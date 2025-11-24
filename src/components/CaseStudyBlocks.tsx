@@ -48,3 +48,48 @@ export function CSTwoColumn({ left, right }: { left: ReactNode, right: ReactNode
     </div>
   );
 }
+
+// --- E. Image Group ---
+// For multiple images in a row
+
+// Define a simple type for the images in the group
+type ImageItem = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+// --- BLOCK 5: Image Group (1, 2, or 3 items) ---
+export function CSImageGroup({ 
+  images, 
+  caption 
+}: { 
+  images: ImageItem[], 
+  caption?: string 
+}) {
+  return (
+    <figure className="cs-image-group-section full-bleed-section">
+       <div className="container">
+         
+         <div className="cs-image-grid" data-count={images.length}>
+           {images.map((img, index) => (
+             <div key={index} className="cs-grid-item">
+                <img 
+                  src={img.src} 
+                  alt={img.alt} 
+                  className="cs-img-responsive shadow-lg" 
+                />
+                {/* 3. Render the specific caption if it exists */}
+                {img.caption && (
+                  <span className="cs-item-caption">{img.caption}</span>
+                )}
+             </div>
+           ))}
+         </div>
+
+         {/* 4. Render the Global caption if it exists */}
+         {caption && <figcaption>{caption}</figcaption>}
+       </div>
+    </figure>
+  );
+}
