@@ -1,16 +1,26 @@
+import { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import type { MouseEvent } from 'react';
 import Logo from './Logo';
 import DarkModeToggle from './DarkModeToggle';
 
-const navItems = [
-  // { to: '/', label: 'Home' }, // Home is usually just the logo
+// Desktop navigation (without Home - logo serves as Home)
+const desktopNavItems = [
+  { to: '/selected-works', label: 'Selected works' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+];
+
+// Mobile navigation (includes Home)
+const mobileNavItems = [
+  { to: '/', label: 'Home' },
   { to: '/selected-works', label: 'Selected works' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,6 +30,9 @@ export default function Header() {
       e.preventDefault();
       return;
     }
+
+    // Close menu on navigation
+    setIsMenuOpen(false);
 
     // Check if View Transitions API is supported
     if (document.startViewTransition) {
@@ -31,6 +44,23 @@ export default function Header() {
     }
     // If not supported, let NavLink handle navigation normally
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   return (
     // 1. Use "site-header" for the glass effect
@@ -46,7 +76,7 @@ export default function Header() {
 
         {/* 4. We create a real nav element */}
         <nav className="main-nav">
-          {navItems.map((item) => (
+          {desktopNavItems.map((item) => (
             <NavLink 
               key={item.label} 
               to={item.to}
@@ -62,7 +92,42 @@ export default function Header() {
         {/* 5. Add the toggle switch */}
         <DarkModeToggle />
 
+        {/* 6. Hamburger menu button (mobile only) */}
+        <button 
+          className="hamburger-menu-button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMenuOpen}
+          onClick={toggleMenu}
+        >
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        </button>
       </div>
+
+      {/* 7. Mobile menu overlay */}
+      {isMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={toggleMenu}>
+          <nav 
+            className="mobile-menu"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {mobileNavItems.map((item) => (
+              <NavLink 
+                key={item.label} 
+                to={item.to}
+                className={({ isActive }) => isActive ? 'active-link' : ''}
+                onClick={(e) => handleNavClick(e as MouseEvent<HTMLAnchorElement>, item.to)}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+            <div className="mobile-menu-toggle">
+              <DarkModeToggle />
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

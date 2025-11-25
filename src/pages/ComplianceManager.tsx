@@ -53,8 +53,7 @@ export default function ComplianceManager() {
 
             {/* Intro Paragraph */}
             <p className="cs-intro-text">
-              How I shaped the UX strategy for Google Cloud’s first unified
-              Compliance Manager service, unblocking $275M in enterprise deals.
+            Unblocking $275M in enterprise pipeline by unifying Google Cloud's fragmented compliance experience
             </p>
           </div>
         </AnimateOnScroll>
@@ -69,9 +68,9 @@ export default function ComplianceManager() {
               user experience from initial strategy and vision to the final MVP.
             </p>
             <ul>
-              <li>Defined the UX vision that aligned 60+ stakeholders</li>
-              <li>Designed critical, user-centered features that unblocked $275M in enterprise and public sector sales</li>
-              <li>Delivered a cohesive MVP with over 100 customers onboarded</li>
+              <li><strong>$275M</strong> in enterprise pipeline unblocked</li>
+              <li><strong>100+</strong> customers onboarded pre-GA launch (exceeded targets)</li>
+              <li><strong>60+</strong> stakeholders aligned around unified vision</li>
             </ul>
           </div>
 
@@ -105,8 +104,8 @@ export default function ComplianceManager() {
         <CSSection>
           <h3>The problem</h3>
           <h2>A fragmented compliance experience left customers disoriented</h2>
-          <p>Just like building codes are critical to ensure your office can withstand disasters like a fire or an earthquake, cloud compliance is vital in ensuring your credit card numbers or health information doesn’t end up in the hands of malicious actors.</p>
-          <p>Organizations using cloud services must adhere to complex security and compliance requirements (CIS, HIPAA, GDPR, etc.) to safeguard against data leaks and attacks.</p>
+          <p>Organizations using Google Cloud must meet complex compliance requirements (CIS, HIPAA, GDPR) to prevent data breaches. But the compliance experience was fragmented across two separate products, <a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> and <a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center</a> (SCC), making it nearly impossible for DevOps and GRC teams to get a unified view of their compliance status.</p>
+          <p>Customers couldn't easily monitor their compliance posture, identify and remediate issues, or prepare for audits.</p>
         </CSSection>
       </AnimateOnScroll>
 
@@ -125,17 +124,15 @@ export default function ComplianceManager() {
     }
   ]}
   // You can still use this for a general label, or leave it empty
-  caption="The compliance experience was fragmented and split across two entirely separate products, making it difficult for customers to get a unified view of their compliance status (posture), identify and remediate issues, and prepare for audits."
+  caption=""
 />
 </AnimateOnScroll>
-<CSSection>
-<p>For DevOps and GRC (Governance, Risk, and Compliance) teams, understanding how to satisfy those requirements on Google Cloud was no easy feat. The compliance experience was fragmented and split across two entirely separate products, < a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> and < a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center</a>. This made it difficult for customers to get a unified view of their compliance status (posture), identify and remediate issues, and prepare for audits.</p>
-</CSSection>
+
       <AnimateOnScroll>
         <CSSection>
           <h3>The challenge</h3>
           <h2>Choosing the path of most resistance</h2>
-          <p>Senior leadership planned to solve the fragmentation by mandating the integration of Assured Workloads into Security Command Center’s (SCC) existing suite of security and threat detection services, leaving the implementation details to the two teams.</p>
+          <p>Senior leadership planned to solve the fragmentation by mandating the integration of <a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> into <a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center’s</a> (SCC) existing suite of security and threat detection services, leaving the implementation details to the two teams.</p>
           <p>The team’s default path was a “lift-and-shift” approach that would move their existing experience into SCC, minimizing disruption to their existing roadmap.</p>
         </CSSection>
         <CSImageGroup

@@ -50,6 +50,16 @@ export default function QuoteCarousel() {
       pagination={{ clickable: true }}
       spaceBetween={30}
       slidesPerView={2}
+      breakpoints={{
+        // When window width is >= 500px, show 2 slides
+        500: {
+          slidesPerView: 2,
+        },
+        // When window width is < 500px, show 1 slide
+        0: {
+          slidesPerView: 1,
+        },
+      }}
     >
       {quotesData.map((quote, index) => (
         <SwiperSlide key={index}>
