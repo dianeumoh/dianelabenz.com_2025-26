@@ -69,7 +69,7 @@ export function CSImageGroup({
 }) {
   return (
     <figure className="cs-image-group-section full-bleed-section">
-       <div className="container">
+       <div className="cs-image-container">
          
          <div className="cs-image-grid" data-count={images.length}>
            {images.map((img, index) => (

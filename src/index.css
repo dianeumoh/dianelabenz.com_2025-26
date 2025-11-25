@@ -1297,6 +1297,13 @@ LAYOUTS AND PAGE SECTIONS
   justify-content: center;
   padding: 3.5rem 20rem;
 }
+.cs-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 5rem
+}
 
 .cs-image-block {
   width: 100%;
@@ -1485,7 +1492,7 @@ LAYOUTS AND PAGE SECTIONS
 }
 /* Case Study Text Blocks */
 .cs-text-container {
-max-width: 75ch;
+max-width: 60ch;
  margin-left: auto;
  margin-right: auto;
  padding-left: 1.5rem;
@@ -1510,12 +1517,10 @@ max-width: 75ch;
 
 /* 1. The Full Bleed Background */
 .cs-image-group-section {
-  /* Use your theme gradient, or a specific one for this effect */
-  background: linear-gradient(180deg, #E0F7FA 0%, #E1F5FE 100%); /* Example: Soft Blue/Green */
-  /* Or use your variable: background: var(--color-gradient-secondary); */
-  
+  background: var(--color-gradient-secondary); 
   padding: 6rem 0; /* Lots of breathing room top/bottom */
   margin-bottom: 6rem;
+  justify-items: center;
 }
 
 /* 2. The Grid Container */
@@ -1523,9 +1528,17 @@ max-width: 75ch;
   display: grid;
   gap: 2rem; /* Space between images */
   align-items: start; /* Aligns images to the top if they have different heights */
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
 }
 
+.cs-image-group-section figcaption {
+  font-size: var(--font-size-body-small);
+  color: var(--color-content-primary);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  margin-top: 1rem;
+  max-width: 100ch;
+}
 
 
 /* 3. Responsive Grid Logic */
@@ -1560,6 +1573,7 @@ max-width: 75ch;
 /* Update the grid item to stack image and text */
 .cs-grid-item {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 0.75rem; /* Space between image and its specific label */
 }

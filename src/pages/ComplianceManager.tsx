@@ -1,6 +1,6 @@
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import type { CaseStudyMeta } from '../types/casestudy';
-import { CSImage, CSSection } from '../components/CaseStudyBlocks';
+import {CSImageGroup, CSSection } from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 
 export default function ComplianceManager() {
@@ -110,14 +110,43 @@ export default function ComplianceManager() {
         </CSSection>
       </AnimateOnScroll>
 
-      <CSImage src="src/images/compliancemanager_problem.png" alt="Google Cloud Compliance Interface" caption="A fragmented compliance experience left customers disoriented" />
+<AnimateOnScroll>
+      <CSImageGroup
+  images={[
+    { 
+      src: "src/images/AssuredWorkloads.png", 
+      alt: "Assured Workloads",
+      caption: "Old: Assured Workloads Compliance Dashboard" // <--- Specific caption
+    },
+    { 
+      src: "src/images/SecurityCommandCenter.png", 
+      alt: "Security Command Center",
+      caption: "Old:Security Command Center Compliance Dashboard" // <--- Specific caption
+    }
+  ]}
+  // You can still use this for a general label, or leave it empty
+  caption="The compliance experience was fragmented and split across two entirely separate products, making it difficult for customers to get a unified view of their compliance status (posture), identify and remediate issues, and prepare for audits."
+/>
+</AnimateOnScroll>
+<CSSection>
+<p>For DevOps and GRC (Governance, Risk, and Compliance) teams, understanding how to satisfy those requirements on Google Cloud was no easy feat. The compliance experience was fragmented and split across two entirely separate products, < a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> and < a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center</a>. This made it difficult for customers to get a unified view of their compliance status (posture), identify and remediate issues, and prepare for audits.</p>
+</CSSection>
       <AnimateOnScroll>
         <CSSection>
-          <h3>The problem</h3>
-          <h2>A fragmented compliance experience left customers disoriented</h2>
-          <p>Just like building codes are critical to ensure your office can withstand disasters like a fire or an earthquake, cloud compliance is vital in ensuring your credit card numbers or health information doesn’t end up in the hands of malicious actors.</p>
-          <p>Organizations using cloud services must adhere to complex security and compliance requirements (CIS, HIPAA, GDPR, etc.) to safeguard against data leaks and attacks.</p>
+          <h3>The challenge</h3>
+          <h2>Choosing the path of most resistance</h2>
+          <p>Senior leadership planned to solve the fragmentation by mandating the integration of Assured Workloads into Security Command Center’s (SCC) existing suite of security and threat detection services, leaving the implementation details to the two teams.</p>
+          <p>The team’s default path was a “lift-and-shift” approach that would move their existing experience into SCC, minimizing disruption to their existing roadmap.</p>
         </CSSection>
+        <CSImageGroup
+          images={[
+            { 
+              src: "src/images/placeholder.png", 
+              alt: "Assured Workloads",
+              caption: "Placeholder image - add learnings from UXR here" // <--- Specific caption
+            }
+          ]}
+        />
       </AnimateOnScroll>
     </CaseStudyLayout>
   );
