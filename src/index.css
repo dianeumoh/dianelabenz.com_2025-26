@@ -839,6 +839,16 @@ REUSABLE COMPONENTS (Additions)
     */
     grid-template-columns: repeat(3, 1fr);
   }
+  .cs-grid[data-count="2"] {
+    display: flex;             /* Switch to Flexbox */
+    justify-content: center;   /* Center them horizontally */
+    gap: 2rem;                 /* Keep the gap */
+  }
+  
+  .cs-grid[data-count="2"] > * {
+    flex: 0 1 33%; /* Basis of 33% (like the 3-col grid), but can shrink */
+    /* Or use 'flex: 1' if you WANT them to stretch to 50% each */
+  }
 }
 
 
@@ -1746,9 +1756,16 @@ max-width: 60ch;
 
 /* 1. The Full Bleed Background */
 .cs-image-group-section {
+  width:100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   padding: 6rem 0; /* Lots of breathing room top/bottom */
   margin-bottom: 6rem;
   justify-items: center;
+  box-sizing: border-box;
 }
 
 /* 2. The Grid Container */
@@ -1801,7 +1818,8 @@ max-width: 60ch;
   /* If 1 image: Centered and constrained width */
   .cs-image-grid[data-count="1"] {
     grid-template-columns: 1fr;
-    max-width: 80%; /* Don't let a single screenshot get TOO massive */
+    width: 100%; 
+    max-width: 90rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1828,7 +1846,7 @@ max-width: 60ch;
   font-size: var(--font-size-body-small);
   color: var(--color-content-tertiary); /* Lighter gray */
   line-height: 1.5;
-  margin-left: 1rem;
+  max-width: 100ch;
 }
 
 /* Center text if it's a gallery (optional, but looks good for Before/After) */

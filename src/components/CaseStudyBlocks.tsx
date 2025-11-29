@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { Children, type ReactNode } from 'react';
 
 // --- A. Standard Text Section ---
 // Handles the spacing and max-width automatically
@@ -108,12 +108,16 @@ export function CSImageGroup({
 // --- BLOCK 6: The Grid Container ---
 // Automatically handles responsive columns
 export function CSGrid({ children }: { children: ReactNode }) {
+  const count = Children.count(children);
   return (
-    <div className="container">
-      <div className="cs-grid">
-        {children}
+    <section className="cs-section-grid">
+      <div className="container">
+        {/* Pass the count to a data attribute */}
+        <div className="cs-grid" data-count={count}>
+          {children}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
