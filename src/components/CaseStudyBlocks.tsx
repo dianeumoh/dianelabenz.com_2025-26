@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 export function CSSection({ children, className = '' }: { children: ReactNode, className?: string }) {
   return (
     <section className={`cs-section ${className}`}>
-      <div className="container cs-text-container">
+      <div className="cs-text-container">
         {children}
       </div>
     </section>
@@ -57,18 +57,22 @@ type ImageItem = {
   src: string;
   alt: string;
   caption?: string;
+  annotations?: string[];
 };
 
 // --- BLOCK 5: Image Group (1, 2, or 3 items) ---
 export function CSImageGroup({ 
   images, 
-  caption 
+  caption,
+  backgroundColor='var(--color-gradient-secondary)'
 }: { 
   images: ImageItem[], 
-  caption?: string 
+  caption?: string,
+  backgroundColor?: string
+
 }) {
   return (
-    <figure className="cs-image-group-section full-bleed-section">
+    <figure className="cs-image-group-section full-bleed-section" style={{ background: backgroundColor }}>
        <div className="cs-image-container">
          
          <div className="cs-image-grid" data-count={images.length}>
@@ -83,11 +87,18 @@ export function CSImageGroup({
                 {img.caption && (
                   <span className="cs-item-caption">{img.caption}</span>
                 )}
+                {/* 4. Render Annotations (Lighter/Smaller) */}
+                {/* We map over the array to create a new line for each one */}
+                {img.annotations && img.annotations.map((note, noteIndex) => (
+                  <span key={noteIndex} className="cs-item-annotation">
+                    {note}
+                  </span>
+                ))}
              </div>
            ))}
          </div>
 
-         {/* 4. Render the Global caption if it exists */}
+         {/* 5. Render the Global caption if it exists */}
          {caption && <figcaption>{caption}</figcaption>}
        </div>
     </figure>
@@ -122,5 +133,24 @@ export function CSCard({ title, description, icon, variant = 'standard' }: CardP
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
+  );
+}
+
+type QuoteProps = {
+  children: ReactNode;
+  source?: string;
+  variant?: 'glass' | 'accent' | 'editorial';
+};
+
+export function CSBlockquote({ children, source, variant = 'accent' }: QuoteProps) {
+  return (
+    <figure className={`cs-blockquote ${variant} full-bleed-section`}>
+      <div className="container cs-text-container">
+        <blockquote>
+          {children}
+        </blockquote>
+        {source && <figcaption>&mdash; {source}</figcaption>}
+      </div>
+    </figure>
   );
 }

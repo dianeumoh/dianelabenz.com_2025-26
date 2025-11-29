@@ -1,6 +1,6 @@
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import type { CaseStudyMeta } from '../types/casestudy';
-import {CSImageGroup, CSSection } from '../components/CaseStudyBlocks';
+import {CSImageGroup, CSGrid,CSCard, CSSection, CSBlockquote } from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 
 export default function ComplianceManager() {
@@ -115,36 +115,172 @@ export default function ComplianceManager() {
     { 
       src: "src/images/AssuredWorkloads.png", 
       alt: "Assured Workloads",
-      caption: "Old: Assured Workloads Compliance Dashboard" // <--- Specific caption
+      caption: "Old: Assured Workloads Compliance Dashboard"
     },
     { 
       src: "src/images/SecurityCommandCenter.png", 
       alt: "Security Command Center",
-      caption: "Old:Security Command Center Compliance Dashboard" // <--- Specific caption
+      caption: "Old:Security Command Center Compliance Dashboard" 
     }
   ]}
-  // You can still use this for a general label, or leave it empty
   caption=""
+  backgroundColor="var(--color-gradient-tertiary)"
 />
 </AnimateOnScroll>
 
       <AnimateOnScroll>
         <CSSection>
           <h3>The challenge</h3>
-          <h2>Choosing the path of most resistance</h2>
-          <p>Senior leadership planned to solve the fragmentation by mandating the integration of <a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> into <a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center’s</a> (SCC) existing suite of security and threat detection services, leaving the implementation details to the two teams.</p>
-          <p>The team’s default path was a “lift-and-shift” approach that would move their existing experience into SCC, minimizing disruption to their existing roadmap.</p>
+          <h2>Navigating competing priorities and organizational constraints</h2>
+          <p>Leadership mandated integration of Assured Workloads into Security Command Center, but left implementation to the teams. The announcement blindsided Assured Workloads—they had to abandon their roadmap, which was already addressing customer pain points like better monitoring beyond just violations.</p>
+          <p><strong>The default solution:</strong> a "lift-and-shift" integration that would move their existing experience into SCC with minimal changes, preserving team velocity.</p>
         </CSSection>
-        <CSImageGroup
+       
+      </AnimateOnScroll>
+      <CSSection>
+        <p><strong>My position:</strong> This would compound the problem. Research I led showed customers found it <em> "too hard to know how to be compliant on Google Cloud."</em> Porting two inconsistent experiences into one product would create:</p>
+        </CSSection>
+        <CSGrid>
+    <CSCard 
+      variant="standard"
+      icon="😵‍💫" // Or <img src="..." />
+      title="High customer toil & confusion"
+      description="Forcing two sets of contradicting terminology and navigation guaranteed user confusion and increased toil."
+    />
+    <CSCard 
+      variant="standard"
+      icon="🏗️"
+      title="Technical debt & unstable architecture"
+      description="Two platforms built on entirely different deployment models meant maintaining a clunky, incoherent experience."
+    />
+    <CSCard 
+      variant="standard"
+      icon="💸"
+      title="Zero improvement to the core adoption challenge"
+      description="It ignored the core user insight that compliance was “too hard to know”, exacerbating our adoption problem."
+    />
+  </CSGrid>
+  <CSSection>
+    <p><strong>My approach:</strong> Advocate for a truly unified experience that would reduce customer toil, accelerate future development, and address our adoption challenge.</p>
+  </CSSection>
+  <AnimateOnScroll>
+    <CSSection>
+      <h3>Vision prototype</h3>
+      <h2>Building the business case for unified compliance</h2>
+      <p>I partnered with the SCC UX lead to create a vision prototype demonstrating a phased path to full integration. We designed around three principles based on my prior research:</p>
+      <ol>
+        <li>1. A unified way to apply frameworks</li>
+        <li>2. A single monitoring view</li>
+        <li>3. A consistent experience to view and triage compliance findings</li>
+      </ol>
+    </CSSection>
+    <CSImageGroup
           images={[
+        
             { 
-              src: "src/images/placeholder.png", 
-              alt: "Assured Workloads",
-              caption: "Placeholder image - add learnings from UXR here" // <--- Specific caption
+              src: "src/images/cm_visionslide_2.png", 
+              alt: "North star concept of unified dashboard",
+              caption: "Unified dashoard with standardized metrics" // <--- Specific caption
+            },
+            { 
+              src: "src/images/cm_visionslide_3.png", 
+              alt: "North star concept of posture management",
+              caption: "Consistent way to apply and manage frameworks" // <--- Specific caption
+            },
+            { 
+              src: "src/images/cm_visionslide_4.png", 
+              alt: "North star concept of compliance monitoring",
+              caption: "A single monitoring view for all frameworks" // <--- Specific caption
             }
           ]}
+          backgroundColor="var(--color-gradient-tertiary)"
+          caption="A few key slides from the unified compliance presentation"
         />
-      </AnimateOnScroll>
+  </AnimateOnScroll>
+  <CSSection>
+    <p>We presented the strategy to a small working group of PM and engineering leads. The team had concerns about timeline and resources, but saw the feasibility of a phased approach. To make a case for dedicated time and resources, we presented to senior leadership.</p>
+    <p>The presentation served as the official catalyst for the "Unified Compliance" initiative, shifting focus to building a fully integrated experience.</p>
+    <CSCard
+      variant="sketchy"
+      icon={<img src="src/images/knot.png" alt="Tangled knot" />}
+      title="The messy middle"
+      description="Alignment didn't happen overnight. It took weeks of continued discussion after the design review—engineering feasibility assessments, political negotiation between teams, and clarifying the phased deprecation strategy. But the presentation served as the catalyst for the 'Unified Compliance' initiative, shifting focus from co-location to true integration."
+    />
+  </CSSection>
+  <AnimateOnScroll>
+  <CSSection>
+    <h3>Prototype & test</h3>
+    <h2>Running rapid discovery with customers</h2>
+    <p>I led three 2-week design sprints to validate the MVP with customers.</p>
+    </CSSection>
+    <CSSection>
+    <h4>Sprint #1: North star concept</h4>
+    <p><strong>Hypothesis:</strong> Users with varying compliance experience need tailored guidance</p>
+    <p>Based on my adoption-barriers study, I knew that cloud engineers setting up GCP infrastructure often lacked compliance experience. As one participant highlighted:</p>
+      <CSBlockquote variant="accent">
+        "These cloud engineers who are responsible for setting up the cloud infra on GCP may not have much experience with compliance. Having additional recommendations for those engineers would be helpful." <br/>- Data & AI Engineer, Public Sector
+      </CSBlockquote>
+      <p>I designed an AI-powered (<a href="https://gemini.google.com/" target="_blank" className="text-link">Gemini</a>) compliance score simulator, inspired by credit score tools, that provided clear, personalized recommendations for improving overall compliance scores.</p>
+      </CSSection>
+    <CSImageGroup
+          images={[
+        
+            { 
+              src: "src/images/Gemini_Compliance_1.png", 
+              alt: "Compliance score simulator showing predicted scores based on remediation actions",
+              caption: "" // <--- Specific caption
+            },
+            { 
+              src: "src/images/Gemini_Compliance_2.png", 
+              alt: "Compliance score simulator showing predicted scores based on remediation actions",
+              caption: "" // <--- Specific caption
+            },
+          ]}
+          backgroundColor="var(--color-gradient-tertiary)"
+          caption="Compliance score simulator showing predicted scores based on remediation actions"
+        />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+        <CSSection>
+          <p><strong>Outcome:</strong> ✅ Validated: 8/10 participants saw value in predicted scores. However, delivering truly personalized recommendations based on each customer's environment wasn't technically feasible for MVP. Rather than ship a generic AI experience that would erode trust, I deprioritized AI features and focused on deterministic, auditable scoring that GRC teams could defend to regulators.</p>
+        </CSSection>
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <CSSection>
+            <h4>Sprint #2: Near-term experience</h4>
+            <p>I applied Sprint 1 learnings to improve transparency and guidance in the near-term MVP. Another adoption barrier was lack of visibility between regulatory requirements (controls) and the Google Cloud policies that achieve those requirements.</p>
+            <p>Despite pushback to create a policy-first view for DevOps teams, I advocated for and designed a "controls-first" experience for all users.</p>
+            <CSCard
+      variant="sketchy"
+      icon={<img src="src/images/noun-pencil.png" alt="Tangled knot" />}
+      title='Why "controls-first" mattered strategically'
+      description="Controls (Compliance requirements) are the cloud-agnostic way Compliance leads and GRC teams measure compliance. An experience without this is like Google Maps without the turn-by-turn directions. For public sector customers, this was table stakes. Without it, we couldn't demonstrate we understood compliance workflows."
+    />
+          </CSSection>
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <CSImageGroup
+            images={[
+              { 
+                src: "src/images/Create posture_MyCanadaProtectedB.png", 
+                alt: "Controls-first experience",
+                caption: "The controls-first view allows GRC users to work in 'controls' (what auditors care about) while letting engineers work in 'policies' (what they implement), creating a single source of truth for both.",
+                annotations: [
+                  "1.'Controls-centric' view: Addresses the compliance “black-box” problem by showing the relationship between compliance requirements and the necessary policies to satisfy them",
+                  "2.View by controls or policies: Allows GRC users to work in 'controls' (what auditors care about) while letting engineers work in 'policies' (what they implement), creating a single source of truth for both."
+                ]
+              },
+            ]}
+            backgroundColor="var(--color-gradient-tertiary)"
+          />
+        </AnimateOnScroll>
+        <AnimateOnScroll>
+          <CSSection>
+            <p><strong>Outcome:</strong> ✅ Validated: The "controls-first" view tested with 100% positive sentiment across 6 sessions </p>
+          </CSSection>
+        </AnimateOnScroll>
+  
+
     </CaseStudyLayout>
   );
 }

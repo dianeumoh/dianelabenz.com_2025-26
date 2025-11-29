@@ -825,10 +825,23 @@ REUSABLE COMPONENTS (Additions)
 .cs-grid {
   display: grid;
   /* Auto-fit columns: nicely wraps from 1 to 2 to 3 columns based on screen size */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin: 4rem 0;
 }
+
+/* Desktop (Tablet and up): Force Horizontal Row */
+@media (min-width: 768px) {
+  .cs-grid {
+    /* This forces 3 equal columns. 
+       If you have 2 cards, it will leave an empty spot.
+       If you have 4 cards, the 4th will wrap. 
+    */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
 
 /* --- BASE CARD STYLES --- */
 .cs-card {
@@ -1505,18 +1518,18 @@ LAYOUTS AND PAGE SECTIONS
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3.5rem 20rem;
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
 }
 .cs-image-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 5rem
+  padding: 1rem 5rem;
 }
 
 .cs-image-block {
@@ -1706,9 +1719,11 @@ LAYOUTS AND PAGE SECTIONS
 }
 /* Case Study Text Blocks */
 .cs-text-container {
+  width: 100%;
 max-width: 60ch;
  margin-left: auto;
  margin-right: auto;
+ margin-bottom: 3rem;
  padding-left: 1.5rem;
  padding-right: 1.5rem;
  align-items: flex-start;
@@ -1731,7 +1746,6 @@ max-width: 60ch;
 
 /* 1. The Full Bleed Background */
 .cs-image-group-section {
-  background: var(--color-gradient-secondary); 
   padding: 6rem 0; /* Lots of breathing room top/bottom */
   margin-bottom: 6rem;
   justify-items: center;
@@ -1774,6 +1788,15 @@ max-width: 60ch;
   .cs-image-grid[data-count="3"] {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .cs-image-grid[data-count="4"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .cs-image-grid[data-count="5"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
   
   /* If 1 image: Centered and constrained width */
   .cs-image-grid[data-count="1"] {
@@ -1800,11 +1823,20 @@ max-width: 60ch;
   display: block;
 }
 
+.cs-item-annotation {
+  display: block; /* Forces a new line */
+  font-size: var(--font-size-body-small);
+  color: var(--color-content-tertiary); /* Lighter gray */
+  line-height: 1.5;
+  margin-left: 1rem;
+}
+
 /* Center text if it's a gallery (optional, but looks good for Before/After) */
 .cs-image-grid[data-count="2"] .cs-item-caption,
 .cs-image-grid[data-count="3"] .cs-item-caption {
   text-align: left; /* Or center, based on your preference */
 }
+
 
 /* 4. Image styling inside grid */
 .cs-grid-item img {
@@ -1814,6 +1846,93 @@ max-width: 60ch;
   /* Optional: Make them look like the screenshot */
   border-radius: 1rem; 
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* =====================================
+   CS BLOCKQUOTE STYLES
+   ===================================== */
+
+/* Base Styles */
+.cs-blockquote {
+  margin: 4rem 0;
+  padding: 4rem 0;
+}
+
+.cs-blockquote blockquote {
+  margin: 0;
+  font-family: var(--font-family-body); /* Use Acorn for impact */
+  font-size: var(--font-size-display-h4); /* ~30px, nice and big */
+  line-height: 1.4;
+  color: var(--color-content-emphasized);
+}
+
+.cs-blockquote figcaption {
+  margin-top: 1.5rem;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-small);
+  color: var(--color-content-tertiary);
+  font-weight: 500;
+  text-align: left; /* Reset center alignment from generic figcaption */
+}
+
+/* --- OPTION 1: THE "ACCENT" QUOTE (Clean & Professional) --- */
+/* Simple left border using your brand purple. Good for standard quotes. */
+.cs-blockquote.accent {
+  background: transparent;
+  padding: 2rem 0;
+}
+
+.cs-blockquote.accent .container {
+  border-left: 4px solid var(--color-brand-accent-primary);
+  padding-left: 2rem;
+}
+
+/* --- OPTION 2: THE "GLASS" QUOTE (Matches your Cards) --- */
+/* A floating glass pill. Good for testimonials or key insights. */
+.cs-blockquote.glass {
+  /* No full-bleed background, the glass IS the background */
+  padding: 0; 
+}
+
+.cs-blockquote.glass .container {
+  /* Reusing your glass variables */
+  background-color: var(--color-glass-bg);
+  backdrop-filter: blur(1.6rem);
+  -webkit-backdrop-filter: blur(1.6rem);
+  border: 1rem solid var(--color-glass-border);
+  
+  border-radius: 2rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+.cs-blockquote.glass figcaption {
+  text-align: center; /* Center citation for this style */
+}
+
+/* --- OPTION 3: THE "EDITORIAL" QUOTE (Big Icon) --- */
+/* Large background quote mark. Good for dramatic pauses. */
+.cs-blockquote.editorial {
+  background-color: var(--color-surface-secondary); /* Distinct background strip */
+  border-radius: 1rem solid var(--color-glass-border);
+}
+
+.cs-blockquote.editorial .container {
+  position: relative;
+  padding-top: 4rem;
+}
+
+/* Add a giant decorative quote mark */
+.cs-blockquote.editorial .container::before {
+  content: "“";
+  position: absolute;
+  top: -2rem;
+  font-family: serif; /* Use a classic serif for the mark */
+  font-size: 12rem;
+  line-height: 1;
+  color: var(--color-brand-accent-secondary);
+  opacity: 0.2;
+  pointer-events: none;
 }
 
 /* Footer */
@@ -1827,7 +1946,7 @@ max-width: 60ch;
   max-width: 1900px;
   margin-left: auto;
   margin-right: auto;
-  background: var(--color-gradient-tertiary);
+  background: var(--color-glass-bg);
 }
 
 .footer-container h5 {
@@ -1857,7 +1976,7 @@ max-width: 60ch;
   max-width: 1900px;
   margin-left: auto;
   margin-right: auto;
-  background: var(--color-gradient-tertiary);
+  background: var(--color-glass-bg);
 }
 
 .footer-copyright-section .divider {
