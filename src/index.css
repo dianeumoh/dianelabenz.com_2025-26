@@ -14,6 +14,19 @@ html {
   box-sizing: border-box;
 }
 
+/* The "Wave" Motion */
+@keyframes glow-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* =====================================
 STYLE GUIDE AND THEME VARIABLES
 ===================================== */
@@ -262,6 +275,12 @@ UTILITY CLASSES
 .footer-external-link:hover,
 .footer-external-link:focus-visible {
   color: var(--color-brand-accent-primary);
+}
+
+.cs-img-no-shadow {
+  box-shadow: none !important; /* Forces removal of the box shadow */
+  filter: none !important;     /* Removes drop-shadows if used */
+  background: transparent;     /* Ensures no background color fills the gaps */
 }
 
 /* =====================================
@@ -875,6 +894,7 @@ REUSABLE COMPONENTS (Additions)
 .cs-card h3 {
   font-size: var(--font-size-body-default);
   font-weight: 700;
+  color: var(--color-content-primary);
   margin: 0;
 }
 
@@ -898,8 +918,8 @@ REUSABLE COMPONENTS (Additions)
 
 /* --- VARIANT 2: SKETCHY (Paper / Rough) --- */
 .cs-card.sketchy {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  background-color: var(--color-surface-secondary);
+  border: 1px solid var(--color-glass-border);
   position: relative;
   
   /* CSS Trick: "Hand-drawn" border radius */
@@ -1508,17 +1528,24 @@ LAYOUTS AND PAGE SECTIONS
 }
 
 .selected-works-card-content h3 {
-  font-size: var(--font-size-display-h4);;
+  font-size: var(--font-size-display-h4);
+  margin-top: 0.5rem;
 }
 
 .selected-works-card-content p {
   font-size: var(--font-size-body-default);
   font-weight: var(--font-weight-regular);
+  margin-top: 1.5rem;
+}
+
+.selected-works-card-content a {
+  margin-top: 2rem;
 }
 
 /* =====================================
    SPECIFIC CASE STUDY STYLES
    ===================================== */
+
 
 .case-study-main {
   width: 100%;
@@ -1565,21 +1592,31 @@ LAYOUTS AND PAGE SECTIONS
 .cs-hero-glow-wrapper::before {
   content: "";
   position: absolute;
-  
-  /* Position the glow */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
   
-  background: var(--color-gradient-primary); 
-  filter: blur(80px); /* Heavy blur to make it gaseous */
-  opacity: 0.5;       /* Soften it so it's not too overwhelming */
-  z-index: -1;        /* Send it behind the image */
+  background: linear-gradient(
+    -45deg, 
+    #E4B5F7, /* Light Pink/Purple */
+    #892DDF, /* Deep Purple */
+    #DFA0FB, /* Mid Purple */
+    #A0C4FF  /* Soft Blue (adds that nice contrast "shine") */
+  );
   
-  /* Optional: Constrain the glow so it doesn't bleed too far */
-  transform: scale(0.8); 
-  border-radius: 100%; /* Makes the glow rounded/organic */
+  /* --- 2. THE MOVEMENT SETUP --- */
+  background-size: 400% 400%; /* Make the gradient huge */
+  animation: glow-wave 3s ease infinite; /* Move it slowly */
+  
+  /* --- 3. THE SOFT BLUR --- */
+  filter: blur(80px); /* Heavy blur for the "aura" look */
+  opacity: 0.6;
+  
+  /* Optional: Shape it */
+  border-radius: 100%;
+  transform: scale(0.9); /* Pull it in slightly so it doesn't bleed off screen */
 }
 
 
@@ -1664,19 +1701,27 @@ LAYOUTS AND PAGE SECTIONS
   content: "";
   position: absolute;
   
-  /* 3. Make the glow larger than the card ("Spill out") */
-  inset: -20px; /* Extends 20px outwards in all directions */
+  inset: -15px; 
+  z-index: -1;
   
-  /* 4. The Gradient */
-  background: var(--color-gradient-primary);
+  /* --- 1. THE ANIMATED GRADIENT --- */
+  background: linear-gradient(
+    -45deg, 
+    #E4B5F7, 
+    #debbff, 
+    #DFA0FB,
+    #A0C4FF
+  );
   
-  /* 5. The Blur */
-  filter: blur(30px);
-  opacity: 0.4;
-  z-index: -1; /* Send behind the card */
+  /* --- 2. THE MOVEMENT SETUP --- */
+  background-size: 400% 400%;
+  animation: glow-wave 4s ease infinite; /* Slightly faster than hero */
   
-  /* Match the card's shape roughly */
-  border-radius: inherit;
+  /* --- 3. THE BLUR --- */
+  filter: blur(30px); /* Less blur to define the card shape */
+  opacity: 0.5;
+  
+  border-radius: inherit; /* Matches the card's rounded corners */
 }
 
 .impact-card h3 {
@@ -1951,6 +1996,81 @@ max-width: 60ch;
   color: var(--color-brand-accent-secondary);
   opacity: 0.2;
   pointer-events: none;
+}
+
+/* =====================================
+   CS AUDIO BUTTON STYLES
+   ===================================== */
+
+/* Base Layout and Centering */
+.cs-audio-block {
+  margin: 6rem 0; /* Vertical spacing */
+}
+
+.cs-audio-button-center {
+  display: flex;
+  /* Use the narrow text container max-width for centering */
+  max-width: 90rem; 
+  margin: 0 auto;
+}
+
+/* The Button Element */
+.cs-audio-button {
+  /* Base Style */
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  border-radius: 50rem; /* Creates the pill shape */
+  font-weight: 700;
+  font-family: var(--font-family-body);
+  text-decoration: none;
+  cursor: pointer;
+  
+  /* Visual Style */
+  background-color: var(--color-surface-primary);
+  color: var(--color-content-primary);
+  position: relative; /* CRITICAL: Enables the ::before glow */
+  overflow: visible; /* Hides glow spill within the bounds */
+  z-index: 10; /* Ensures text is above the glow */
+  transition: transform 0.2s ease-in-out;
+  
+  /* Optional: Small default shadow */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* The Icon/Emoji */
+.cs-audio-button .cs-button-icon {
+    font-size: 1.8rem;
+}
+
+/* The Pulsing Glow Effect (Reusing the Hero/Card Logic) */
+.cs-audio-button::before {
+  content: "";
+  position: absolute;
+  inset: -3px; /* Makes the glow tightly wrap the button */
+  z-index: -1;
+  
+  /* Reusing the gradient definition */
+  background: linear-gradient(
+    -45deg, 
+    #E4B5F7, 
+    #892DDF, 
+    #DFA0FB, 
+    #A0C4FF
+  );
+  
+  background-size: 400% 400%;
+  animation: glow-wave 6s ease infinite; /* Adjust speed here */
+  
+  filter: blur(15px); /* Tighter blur for the smaller button */
+  opacity: 0.7;
+  border-radius: 50rem; /* Matches the pill shape */
+  pointer-events: none;
+}
+
+.cs-audio-button:hover {
+  transform: scale(1.05);
 }
 
 /* Footer */

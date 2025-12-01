@@ -14,11 +14,11 @@ export function CSSection({ children, className = '' }: { children: ReactNode, c
 
 // --- B. Full Width Image ---
 // For those big, beautiful screenshots
-export function CSImage({ src, alt, caption }: { src: string, alt: string, caption?: string }) {
+export function CSImage({ src, alt, caption, noShadow = false }: { src: string, alt: string, caption?: string, noShadow?: boolean }) {
   return (
     <figure className="cs-image-block full-bleed-section">
        <div className="container">
-         <img src={src} alt={alt} className="cs-img-responsive shadow-lg" />
+         <img src={src} alt={alt} className={`cs-img-responsive ${noShadow ? 'cs-img-no-shadow' : 'shadow-lg'}`} />
          {caption && <figcaption>{caption}</figcaption>}
        </div>
     </figure>
@@ -58,6 +58,7 @@ type ImageItem = {
   alt: string;
   caption?: string;
   annotations?: string[];
+  noShadow?: boolean;
 };
 
 // --- BLOCK 5: Image Group (1, 2, or 3 items) ---
@@ -81,7 +82,7 @@ export function CSImageGroup({
                 <img 
                   src={img.src} 
                   alt={img.alt} 
-                  className="cs-img-responsive shadow-lg" 
+                  className={`cs-img-responsive ${img.noShadow ? 'cs-img-no-shadow' : 'shadow-lg'}`}
                 />
                 {/* 3. Render the specific caption if it exists */}
                 {img.caption && (
@@ -156,5 +157,33 @@ export function CSBlockquote({ children, source, variant = 'accent' }: QuoteProp
         {source && <figcaption>&mdash; {source}</figcaption>}
       </div>
     </figure>
+  );
+}
+
+// --- BLOCK 9: Audio Button (Updated) ---
+export function CSAudioButton({ 
+  audioUrl, 
+  text = "Listen to case study" // Default fallback text
+}: { 
+  audioUrl: string;
+  text?: string; // Optional string prop
+}) {
+  return (
+    <section className="cs-audio-block">
+      <div className="container cs-audio-button-center">
+        <a 
+          href={audioUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="cs-audio-button"
+        >
+          {/* You can swap this emoji for an SVG icon component if you prefer */}
+          <span role="img" aria-label="Headphones" className="cs-button-icon">🎧</span>
+          
+          {/* This renders whatever text you pass in */}
+          {text}
+        </a>
+      </div>
+    </section>
   );
 }
