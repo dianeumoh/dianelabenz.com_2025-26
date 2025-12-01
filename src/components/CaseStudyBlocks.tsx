@@ -1,4 +1,6 @@
 import { Children, type ReactNode } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 
 // --- A. Standard Text Section ---
 // Handles the spacing and max-width automatically
@@ -160,29 +162,144 @@ export function CSBlockquote({ children, source, variant = 'accent' }: QuoteProp
   );
 }
 
-// --- BLOCK 9: Audio Button (Updated) ---
+
+
+// src/components/case-study/CaseStudyBlocks.tsx
+import { useState, useRef, useEffect } from 'react';
+
+// --- BLOCK 9: Audio Player (Interactive) ---
 export function CSAudioButton({ 
   audioUrl, 
-  text = "Listen to case study" // Default fallback text
+  text = "Listen" 
 }: { 
-  audioUrl: string;
-  text?: string; // Optional string prop
+  audioUrl: string; 
+  text?: string; 
 }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false); // New state to track "active" mode
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = new Audio(audioUrl);
+    audio.preload = 'metadata'; 
+    audioRef.current = audio;
+
+    const setAudioDuration = () => {
+        if(isFinite(audio.duration)) {
+            setDuration(audio.duration);
+        }
+    };
+
+    const updateProgress = () => {
+      setCurrentTime(audio.currentTime);
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setHasStarted(false); // Reset to "Button" mode when done
+      setCurrentTime(0);
+    };
+
+    audio.addEventListener('loadedmetadata', setAudioDuration);
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener('loadedmetadata', setAudioDuration);
+      audio.removeEventListener('timeupdate', updateProgress);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [audioUrl]);
+
+  // --- CONTROLS ---
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+      setHasStarted(true); // Switch to "Player" layout
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const skipTime = (seconds: number) => {
+    if (!audioRef.current) return;
+    audioRef.current.currentTime += seconds;
+  };
+
+  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!audioRef.current) return;
+    const time = Number(e.target.value);
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
+  };
+
+  // --- HELPERS ---
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
     <section className="cs-audio-block">
       <div className="container cs-audio-button-center">
-        <a 
-          href={audioUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="cs-audio-button"
-        >
-          {/* You can swap this emoji for an SVG icon component if you prefer */}
-          <span role="img" aria-label="Headphones" className="cs-button-icon">🎧</span>
+        
+        {/* We use a div container that changes classes based on state */}
+        <div className={`cs-audio-player-pill ${hasStarted ? 'active-player' : ''}`}>
           
-          {/* This renders whatever text you pass in */}
-          {text}
-        </a>
+          {/* 1. PLAY/PAUSE BUTTON */}
+          <button 
+            onClick={toggleAudio}
+            className="cs-player-control-btn main-play-btn"
+            aria-label={isPlaying ? "Pause" : "Play"}
+          >
+            {isPlaying ? '⏸' : <FontAwesomeIcon icon={faCirclePlay} />}
+          </button>
+
+          {/* 2. CONDITIONAL CONTENT */}
+          {!hasStarted ? (
+            // STATE A: Idle (Text Label)
+            <span className="cs-audio-label" onClick={toggleAudio}>
+              {text} • {formatTime(duration || 0)}
+            </span>
+          ) : (
+            // STATE B: Active (Controls & Scrubber)
+            <div className="cs-player-controls">
+              
+              {/* Rewind 15s */}
+              <button onClick={() => skipTime(-15)} className="cs-player-control-btn small">
+                ↺ 15s
+              </button>
+
+              {/* Progress Bar */}
+              <div className="cs-player-scrubber">
+                <span className="cs-time-current">{formatTime(currentTime)}</span>
+                <input 
+                  type="range" 
+                  min={0} 
+                  max={duration} 
+                  value={currentTime} 
+                  onChange={handleSeek}
+                  className="cs-seek-slider"
+                  style={{
+                    // Dynamic CSS variable for the progress fill
+                    '--seek-before-width': `${(currentTime / duration) * 100}%`
+                  } as React.CSSProperties}
+                />
+                <span className="cs-time-total">{formatTime(duration)}</span>
+              </div>
+
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

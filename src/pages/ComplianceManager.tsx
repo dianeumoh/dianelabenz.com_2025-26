@@ -56,11 +56,6 @@ export default function ComplianceManager() {
             <p className="cs-intro-text">
             Unblocking $275M in enterprise pipeline by unifying Google Cloud's fragmented compliance experience
             </p>
-            
-<CSAudioButton 
-  audioUrl="https://..." 
-  text="Listen • 12 minutes" 
-/>
 
           </div>
         </AnimateOnScroll>
@@ -108,6 +103,10 @@ export default function ComplianceManager() {
 
       <AnimateOnScroll>
         <CSSection>
+        <CSAudioButton 
+  audioUrl="public/audio/compliance-manager-audio.m4a" 
+  text="Listen to this case study" 
+/>
           <h3>Background</h3>
           <h2>I was tasked to lead a compliance integration effort in the absence of PRDs</h2>
           <p>Organizations using Google Cloud must meet complex compliance requirements (CIS, HIPAA, GDPR) to secure user data, but the compliance experience was fragmented across two separate products, <a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> and <a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center</a> (SCC), making it nearly impossible for DevOps and GRC teams to get a unified view of their compliance status.</p>

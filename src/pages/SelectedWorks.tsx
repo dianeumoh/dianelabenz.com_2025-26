@@ -1,12 +1,12 @@
 import AnimateOnScroll from '../components/AnimateOnScroll';
 export default function SelectedWorks() {
   return (
-    <section aria-labelledby="selected-works" className="full-bleed-section">
+    <section aria-labelledby="selected-works" className="selected-works-section-full-bleed">
       <div className="selected-works-section">
         <AnimateOnScroll>
         <div className="selected-works-section-header">
         <h1>Selected works</h1>
-        <p>A glimpse into some of the impactful projects I've shipped - transforming complexity into user wins and measurable success.</p>
+        <p>A glimpse into a few of the impactful projects I've shipped - transforming complexity into user wins and measurable success.</p>
         </div>
         </AnimateOnScroll>
         <AnimateOnScroll>
@@ -52,8 +52,8 @@ export default function SelectedWorks() {
               <h3>Helping system administrators secure the castle </h3>
               <div className="tag-primary-container">
                 <span className="tag-primary">Product strategy</span>
-                <span className="tag-primary">Design</span>
-                <span className="tag-primary">Development</span>
+                <span className="tag-primary">User research</span>
+                <span className="tag-primary">End-to-end design</span>
               </div>
               <p className="text-link">Get the scoop</p>
             </div>
@@ -66,7 +66,7 @@ export default function SelectedWorks() {
               <div className="tag-primary-container">
                 <span className="tag-primary">Product strategy</span>
                 <span className="tag-primary">Design</span>
-                <span className="tag-primary">Development</span>
+                <span className="tag-primary">Workshop facilitation</span>
               </div>
               <p className="text-link">Dive into the details</p>
             </div>

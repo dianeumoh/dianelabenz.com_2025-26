@@ -130,6 +130,11 @@ STYLE GUIDE AND THEME VARIABLES
   --color-header-border: rgba(255, 255, 255, 0.1);
   --color-link-hover: var(--color-brand-accent-primary);
   --color-nav-link-active: var(--color-content-emphasized);
+
+  .blob {
+    mix-blend-mode: hard-light;
+    opacity: 0.8;
+  }
 }
 
 /* =====================================
@@ -1457,12 +1462,18 @@ LAYOUTS AND PAGE SECTIONS
 }
 
 /* Selected Works Section */
+
+.selected-works-section-full-bleed {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .selected-works-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  padding: 3.5rem 20rem;
   max-width: 1800px;
 }
 
@@ -1543,8 +1554,133 @@ LAYOUTS AND PAGE SECTIONS
 }
 
 /* =====================================
-   SPECIFIC CASE STUDY STYLES
-   ===================================== */
+CONTACT SECTION STYLES
+===================================== */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8rem 20rem;
+  gap: 2rem;
+  color: var(--color-content-primary);
+}
+
+.contact-section h1 {
+  margin-bottom: 2.5rem;
+  z-index: 10;
+}
+.contact-section h2 {
+  font-size: var(--font-size-body-large);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  z-index: 10;
+  color: var(--color-content-secondary);
+}
+
+
+/*Blob gradient background*/
+/* Base Container */
+.gradient-background {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  background-color: var(--color-surface-primary);
+}
+
+/* Common Blob Styles */
+.blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vw; /* Massive size for smooth blending */
+  height: 60vw;
+  background-color: var(--color, #fff);
+  border-radius: 50%;
+  mix-blend-mode: multiply; 
+  filter: blur(80px); /* The "mist" effect */
+  opacity: 0.6;
+  animation: move 20s infinite alternate;
+}
+
+/* Individual Blob Colors & Animations */
+/* Replace these hex codes with your design tokens */
+.blob-1 {
+  --color: #F9C3CA;
+  top: 10%;
+  left: 10%;
+  animation-duration: 18s;
+  animation-delay: -2s;
+  transform-origin: top left;
+}
+
+.blob-2 {
+  --color: #E9EDB2;
+  top: 60%;
+  left: 80%;
+  animation-duration: 25s;
+  animation-delay: -5s;
+  transform-origin: bottom right;
+}
+
+.blob-3 {
+  --color: #C8B6FF
+  top: 40%;
+  left: 40%;
+  animation-duration: 22s;
+  animation-delay: -7s;
+  transform-origin: center;
+}
+
+/* Optional: Add more blobs for complexity */
+.blob-4 {
+  --color: var(--color-brand-accent-tertiary);
+  top: 20%;
+  left: 70%;
+  animation-duration: 30s;
+  transform-origin: top right;
+}
+
+.blob-5 {
+  --color: #ffd700; /* Yellow */
+  top: 80%;
+  left: 20%;
+  animation-duration: 28s;
+  transform-origin: bottom left;
+}
+
+/* The Movement Animation */
+/* Moves blobs in a circular/organic pattern */
+@keyframes move {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(10%, 10%) rotate(45deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-5%, 20%) rotate(90deg) scale(0.9);
+  }
+  75% {
+    transform: translate(-15%, -10%) rotate(135deg) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) rotate(180deg) scale(1);
+  }
+}
+
+/* Ensure content sits on top */
+.content {
+  position: relative;
+  z-index: 10;
+  color: var(--color-surface-primary);
+}
+
+/* =====================================
+SPECIFIC CASE STUDY STYLES
+===================================== */
 
 
 .case-study-main {
@@ -1999,82 +2135,194 @@ max-width: 60ch;
 }
 
 /* =====================================
-   CS AUDIO BUTTON STYLES
+   CS AUDIO PLAYER (FINAL)
    ===================================== */
 
-/* Base Layout and Centering */
+/* 1. Layout & Centering Wrappers */
 .cs-audio-block {
-  margin: 6rem 0; /* Vertical spacing */
+  margin: 6rem 0;
 }
 
 .cs-audio-button-center {
   display: flex;
-  /* Use the narrow text container max-width for centering */
   max-width: 90rem; 
   margin: 0 auto;
 }
 
-/* The Button Element */
-.cs-audio-button {
-  /* Base Style */
+/* 2. The Main Pill Container 
+   (This replaces the old .cs-audio-button) 
+*/
+.cs-audio-player-pill {
+  /* Layout */
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 3rem;
-  border-radius: 50rem; /* Creates the pill shape */
-  font-weight: 700;
-  font-family: var(--font-family-body);
-  text-decoration: none;
-  cursor: pointer;
+  padding: 1rem 2rem; /* Slightly tighter padding to accommodate controls */
   
-  /* Visual Style */
-  background-color: var(--color-surface-primary);
-  color: var(--color-content-primary);
-  position: relative; /* CRITICAL: Enables the ::before glow */
-  overflow: visible; /* Hides glow spill within the bounds */
-  z-index: 10; /* Ensures text is above the glow */
-  transition: transform 0.2s ease-in-out;
+  /* Initial Width & Transition */
+  min-width: 200px;
+  transition: all 0.3s ease;
   
-  /* Optional: Small default shadow */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  /* VISUAL STYLE: White Pill with Gradient Border */
+  /* Uses the double-background trick */
+  background: 
+    linear-gradient(var(--color-surface-primary), var(--color-surface-primary)) padding-box,
+    linear-gradient(-45deg, #E4B5F7, #892DDF, #DFA0FB, #A0C4FF) border-box;
+  
+  border: 3px solid transparent;
+  border-radius: 50rem;
+  
+  /* Positioning context for the outer glow */
+  position: relative;
+  z-index: 1;
 }
 
-/* The Icon/Emoji */
-.cs-audio-button .cs-button-icon {
-    font-size: 1.8rem;
+/* Hover Effect (Only lifts the pill, doesn't break layout) */
+.cs-audio-player-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* The Pulsing Glow Effect (Reusing the Hero/Card Logic) */
-.cs-audio-button::before {
+/* 3. The Outer Glow / Aura */
+.cs-audio-player-pill::before {
   content: "";
   position: absolute;
-  inset: -3px; /* Makes the glow tightly wrap the button */
+  inset: -3px; /* Match the border width */
   z-index: -1;
   
-  /* Reusing the gradient definition */
-  background: linear-gradient(
-    -45deg, 
-    #E4B5F7, 
-    #892DDF, 
-    #DFA0FB, 
-    #A0C4FF
-  );
-  
+  background: var(--color-surface-primary);
   background-size: 400% 400%;
-  animation: glow-wave 6s ease infinite; /* Adjust speed here */
+  animation: glow-wave 6s ease infinite;
   
-  filter: blur(15px); /* Tighter blur for the smaller button */
-  opacity: 0.7;
-  border-radius: 50rem; /* Matches the pill shape */
-  pointer-events: none;
+  filter: blur(15px);
+  opacity: 0.5;
+  border-radius: 50rem;
 }
 
-.cs-audio-button:hover {
-  transform: scale(1.05);
+/* 4. Text Label (Idle State) */
+.cs-audio-label {
+  font-size: var(--font-size-body-small);
+  color: var(--color-content-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  
+  /* Flex settings to keep it centered */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Footer */
-.footer-container {
+/* 5. Control Buttons (Play, Pause, Rewind) */
+.cs-player-control-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-content-primary);
+  transition: transform 0.1s;
+}
+
+.main-play-btn {
+  font-size: 1.8rem;
+  /* Make sure the emoji doesn't get squished */
+  flex-shrink: 0; 
+}
+
+.cs-player-control-btn:hover {
+  transform: scale(1.1);
+}
+
+.cs-player-control-btn.small {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-content-tertiary);
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+/* 6. Active State Container */
+.cs-player-controls {
+  display: flex;
+  align-items: center;
+  flex: 1; 
+  width: 100%;
+  animation: fade-in 0.3s ease; /* Smoothly fade in controls */
+}
+
+/* 7. The Scrubber Area */
+.cs-player-scrubber {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.cs-time-current, .cs-time-total {
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-content-tertiary);
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+/* 8. Custom Range Slider Styling */
+.cs-seek-slider {
+  -webkit-appearance: none;
+  width: 150px; /* Base width */
+  height: 4px;
+  border-radius: 5px;
+  background: var(--color-surface-primary);
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  flex-grow: 1; /* Allow it to stretch */
+}
+
+/* The Progress Fill */
+.cs-seek-slider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--seek-before-width);
+  background: var(--color-brand-accent-primary);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+/* The Thumb (Handle) */
+.cs-seek-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: var(--color-brand-accent-tertiary);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+}
+
+/* Firefox Support */
+.cs-seek-slider::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-brand-accent-tertiary);
+  cursor: pointer;
+}
+
+
+/* =====================================
+   FOOTER STYLES
+   ===================================== */
+
+   .footer-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
