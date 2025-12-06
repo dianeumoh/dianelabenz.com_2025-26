@@ -22,6 +22,7 @@ export default function ExtraCurricularsCard() {
         As a board member for the GAAD Foundation, I help steer the mission
         of making digital accessibility a core part of product development.
       </p>
+      <p>Check out the <a href="https://gaad.foundation/" className="text-link">GAAD Foundation</a> website for more information.</p>
     </div>
   );
 
@@ -31,7 +32,7 @@ export default function ExtraCurricularsCard() {
       <div>
         <img src="src/images/WashDay.png" alt="Wash Day app" />
       </div>
-      <h3>Wash Day App</h3>
+      <h3>Wash Day app</h3>
       <div className="tag-primary-container">
         <p className="tag-primary">Visual design</p>
         <p className="tag-primary">Side project</p>
@@ -41,10 +42,9 @@ export default function ExtraCurricularsCard() {
 
   const washDayBack = (
     <div className="card-description-back">
-      <h4>About this project</h4>
+      <h4>About Wash Day</h4>
       <p>
-        A personal side project to explore visual design and branding
-        for a mobile app concept.
+       Wash Day is a mobile app (and personal side project) that fosters knowledge about natural hair care by generating personalized hair care routines based on the user's hair type and goals.
       </p>
     </div>
   );
@@ -70,9 +70,10 @@ export default function ExtraCurricularsCard() {
     <div className="card-description-back">
       <h4>About my patent</h4>
       <p>
-        Co-inventor on a design patent for a novel user
-        interface component.
+        I am a co-inventor on a design patent for a novel user
+        interface component that allows users to easily navigate role-based access permissions.
       </p>
+      <p>Check out the <a href="https://patents.google.com/patent/USD977511S1" className="text-link">patent</a> for more information.</p>
     </div>
   );
 
@@ -97,9 +98,9 @@ export default function ExtraCurricularsCard() {
     <div className="card-description-back">
       <h4>About this event</h4>
       <p>
-        Co-organizer and speaker for an internal conference promoting
-        inclusive design principles.
-      </p>
+        In May of 2021, As the Director of Design at Code for San Jose,I organized an 2-day long online international conference on inclusive product development.</p>
+        <p>Catch the conference replay at <a href="https://www.youtube.com/channel/UCnZvPzUb3i686FTku5xkaFw" className="text-link">Inclusive Product Week's YouTube channel</a></p>
+      
     </div>
   );
 

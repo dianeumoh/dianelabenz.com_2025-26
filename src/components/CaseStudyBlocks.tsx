@@ -268,7 +268,7 @@ export function CSAudioButton({
           {!hasStarted ? (
             // STATE A: Idle (Text Label)
             <span className="cs-audio-label" onClick={toggleAudio}>
-              {text} • {formatTime(duration || 0)}
+              {text} • {formatTime(duration || 0)} min
             </span>
           ) : (
             // STATE B: Active (Controls & Scrubber)
@@ -294,7 +294,7 @@ export function CSAudioButton({
                     '--seek-before-width': `${(currentTime / duration) * 100}%`
                   } as React.CSSProperties}
                 />
-                <span className="cs-time-total">{formatTime(duration)}</span>
+                <span className="cs-time-total">{formatTime(duration)} min</span>
               </div>
 
             </div>

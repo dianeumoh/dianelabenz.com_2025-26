@@ -17,7 +17,7 @@ const quotesData: QuoteCardProps[] = [
   },
   {
     quote:
-      "Diane is one of the most passionate designers I've ever met. She's an excellent problem solver and a huge customer advocate. She's never afraid to ask the tough questions and think outside the box.",
+      "Diane is one of the most passionate designers I've ever met. She's an excellent problem solver and a huge customer advocate. She's never afraid to ask the tough questions and think outside the box... She frequently goes out of her way to mentor junior designers and do everything in her power to elevate her team.",
     author: 'Derek Chen',
     role: 'Design Leader, Hewlett Packard Enterprise',
     avatarUrl: 'src/images/Derek.png',
@@ -32,7 +32,8 @@ const quotesData: QuoteCardProps[] = [
  
   {
     quote:
-      'Diane leads with mindfulness and empathy at the core...thorough is an understatement of her work.',
+      `Diane is an all-star leader... One of Diane's first contributions [at Code for San Jose] was orchestrating usability studies for a group at Stanford that helped community members navigate renter's rights. 
+Diane leads with mindfulness and empathy at the core. Diane's most notable achievement was organizing the Inclusive Product Week event. She managed a team of 10 people and coordinated 30 speakers to present inspiring content on how to design and build inclusive products. She designed every aspect of the event - from attendee experience, speaker experience, organizer experience... the whole package. Thorough is an understatement of her work.`,
     author: 'Annie Steenson',
     role: 'Senior AI/ML Engineering Program Manager, Apple',
     avatarUrl: 'src/images/Annie.png',

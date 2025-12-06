@@ -37,7 +37,7 @@ export default function SelectedWorks() {
                 <span className="tag-primary">End-to-end design</span>
                 <span className="tag-primary">Product leadership & strategy</span>
               </div>
-              <p className="text-link">See the solution</p>
+              <a href="/data-security" target="_blank" className="text-link">See the solution</a>
             </div>
           </div>
         </div>

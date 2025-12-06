@@ -1021,6 +1021,12 @@ LAYOUTS AND PAGE SECTIONS
   background: var(--color-gradient-tertiary);
   width: 100%;
 }
+.full-bleed-footer-container {
+  width: 100%;
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+}
+
 
 .hero-section {
   display: flex;
@@ -1556,27 +1562,70 @@ align-items: center;
 /* =====================================
 CONTACT SECTION STYLES
 ===================================== */
+/* The 2-Column Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  min-height: 100vh; /* Make it fill the screen */
+  position: relative;
+  z-index: 10; /* Sit above the background */
+}
 
-.contact-section {
+/* Desktop: Split 50/50 */
+@media (min-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* The Text Side */
+.contact-text-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 8rem 20rem;
   gap: 2rem;
+  /* Add a glass backing to make text readable over the gradient? */
+  /* backdrop-filter: blur(10px); */ 
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: var(--font-size-body-large);
+  font-weight: 500;
+  text-decoration: none;
   color: var(--color-content-primary);
 }
 
-.contact-section h1 {
-  margin-bottom: 2.5rem;
-  z-index: 10;
+.contact-button {
+  margin-top: 3rem;
 }
-.contact-section h2 {
-  font-size: var(--font-size-body-large);
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  z-index: 10;
-  color: var(--color-content-secondary);
+/* The Image Side */
+.contact-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The "Floating" Animation */
+.floating-image {
+  width: 100%;
+  max-width: 56.4rem; /* Constraint */
+  height: auto;
+  
+  /* Make it float gently like the example */
+  animation: float 6s ease-in-out infinite;
+  
+  /* Optional: Blend it slightly if it's an abstract shape */
+  /* mix-blend-mode: multiply; */ 
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
 
 
@@ -1585,10 +1634,25 @@ CONTACT SECTION STYLES
 .gradient-background {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   overflow: hidden;
   background-color: var(--color-surface-primary);
 }
+.gradient-background::after {
+  content: "";
+  position: absolute;
+  inset: 0; /* Cover the whole screen */
+  z-index: 1; /* Sit on top of the blobs/gradient */
+  
+  /* This creates a noise texture using CSS gradients */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+  
+  /* Blend it so it looks like texture, not a gray sheet */
+  opacity: 0.07; /* Very subtle! */
+  pointer-events: none; /* Let clicks pass through */
+  mix-blend-mode: overlay;
+}
+
 
 /* Common Blob Styles */
 .blob {
@@ -1626,7 +1690,7 @@ CONTACT SECTION STYLES
 }
 
 .blob-3 {
-  --color: #C8B6FF
+  --color: #C8B6FF;
   top: 40%;
   left: 40%;
   animation-duration: 22s;
@@ -1930,6 +1994,20 @@ max-width: 60ch;
   margin-top: 1.5rem;
 }
 
+.cs-text-container ol {
+  list-style-position: outside;
+}
+.cs-text-container ul {
+  list-style-position: outside;
+}
+.cs-text-container ul li {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.cs-text-container ul li::before {
+  content: "•";
+  margin-right: 0.5rem;
+}
 /* Case Study Image Gallery */
 /* =====================================
    CS IMAGE GROUP (Gallery)
@@ -2271,6 +2349,7 @@ max-width: 60ch;
 /* 8. Custom Range Slider Styling */
 .cs-seek-slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 150px; /* Base width */
   height: 4px;
   border-radius: 5px;
@@ -2317,12 +2396,116 @@ max-width: 60ch;
   cursor: pointer;
 }
 
+/* =====================================
+   PASSWORD GATE (Soft Wall)
+   ===================================== */
+
+   .password-gate-wrapper {
+    position: relative;
+    /* This prevents the locked content from expanding the page */
+    overflow: hidden; 
+  }
+  
+  /* 1. The "Preview" Area */
+  .password-gate-content-preview {
+    /* Allow users to see just the top ~400px of the next section before it fades */
+    max-height: 40rem; 
+    overflow: hidden;
+    /* Determine user-select based on your preference (prevent copy-paste) */
+    user-select: none; 
+    pointer-events: none; /* Prevent clicking links inside the blurred area */
+  }
+  
+  /* 2. The Overlay (Gradient + Form Container) */
+  .password-gate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    
+    /* The "NYT Fade" Effect */
+    /* Starts transparent, fades to your solid background color */
+    background: linear-gradient(
+      to bottom, 
+      rgba(253, 252, 245, 0) 0%, 
+      var(--color-surface-secondary) 60%, 
+      var(--color-surface-secondary) 100%
+    );
+    
+    /* Center the lock card */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Push it towards the bottom of the fade */
+    padding-bottom: 6rem;
+  }
+  
+  /* 3. The Lock Card */
+  .password-gate-card {
+    background-color: var(--color-surface-primary);
+    border: 1px solid var(--color-content-tertiary);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    max-width: 50rem;
+    width: 100%;
+  }
+  
+
+  .password-gate-card h3 {
+    margin-top: 0;
+    font-size: var(--font-size-display-h5);
+  }
+  .password-gate-card p {
+    font-size: var(--font-size-body-small);
+    color: var(--color-content-tertiary);
+    margin-top: 1rem;
+  }
+  /* 4. Form Elements */
+  .password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .password-form .button-primary {
+    justify-content: center;
+  }
+  
+
+
+  .password-input {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1.6rem;
+    outline: none;
+  }
+  
+  .password-input:focus {
+    border-color: var(--color-brand-accent-primary);
+  }
+  
+  .input-error {
+    border-color: red;
+  }
+  
+  .password-error {
+    color: red;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    display: block;
+  }
 
 /* =====================================
    FOOTER STYLES
    ===================================== */
 
-   .footer-container {
+  .footer-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -2332,12 +2515,11 @@ max-width: 60ch;
   max-width: 1900px;
   margin-left: auto;
   margin-right: auto;
-  background: var(--color-glass-bg);
 }
 
 .footer-container h5 {
   font-size: var(--font-size-body-small);
-  color: (var--color-content-primary);
+  color: var(--color-content-primary);
   font-family: var(--font-family-body);
 }
 
@@ -2362,7 +2544,6 @@ max-width: 60ch;
   max-width: 1900px;
   margin-left: auto;
   margin-right: auto;
-  background: var(--color-glass-bg);
 }
 
 .footer-copyright-section .divider {

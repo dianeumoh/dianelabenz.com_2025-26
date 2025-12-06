@@ -9,6 +9,7 @@ import SelectedWorks from './pages/SelectedWorks.tsx'
 import About from './pages/About.tsx'
 import Contact from './pages/Contact.tsx'
 import ComplianceManager from './pages/ComplianceManager.tsx'
+import DataSecurity from './pages/DataSecurity.tsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
       { path: 'compliance-manager', element: <ComplianceManager /> },
+      { path: 'data-security', element: <DataSecurity /> },
     ],
   },
 ])

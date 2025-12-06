@@ -1,5 +1,4 @@
 import AnimateOnScroll from '../components/AnimateOnScroll';
-import ArrowIcon from '../components/ArrowIcon';
 export default function Contact() {
   return (
     <section aria-labelledby="contact-section" className="gradient-background">
@@ -8,25 +7,46 @@ export default function Contact() {
       <div className="blob blob-3"></div>
       <div className="blob blob-4"></div>
       <div className="blob blob-5"></div>
-      <div className="contact-section container">
+      {/* 2. The Content Grid */}
+      <div className="container contact-grid">
         <AnimateOnScroll>
-        <h1>Let's explore your next project!</h1>
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-        <h2><i className="fa-solid fa-envelope"></i> dianelabenz3@gmail.com</h2>
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-        <h2><i className="fa-solid fa-location-dot"></i> Bay Area, CA</h2>
-        </AnimateOnScroll>
-        <AnimateOnScroll>
-          <div>
-        <a className="button-primary" href="https://www.linkedin.com/in/dianelabenz/">
-          LinkedIn
-          <span className="material-symbols-outlined">arrow_right_alt</span>
-        </a>
+        {/* LEFT COLUMN: Your Text */}
+        <div className="contact-text-content">
+          <AnimateOnScroll>
+          <h1>Let's explore your next project!</h1>
+          </AnimateOnScroll>
+          <div className="contact-links">
+            <a href="mailto:..." className="contact-item">
+            <i className="fa-solid fa-envelope"></i> dianelabenz3@gmail.com
+            </a>
+            <div className="contact-item">
+            <i className="fa-solid fa-location-dot"></i> San Francisco Bay Area, CA
+            </div>
+            <AnimateOnScroll>
+            <div className="contact-button">
+              <a href="https://www.linkedin.com/in/dianelabenz/" className="button-primary">
+                Connect on LinkedIn &rarr;
+              </a>
+            </div>
+            </AnimateOnScroll>
+          </div>
         </div>
         </AnimateOnScroll>
+
+        {/* RIGHT COLUMN: The "Visual Anchor" Image */}
+        <div className="contact-visual">
+          {/* Replace this src with a transparent PNG.
+             Ideas: A 3D glass shape, a flower (like the example), 
+             or a cutout of you looking at the text.
+          */}
+          <img 
+            src="/src/images/purple_blob.png" 
+            alt="Purple glass shape" 
+            className="floating-image" 
+          />
+        </div>
+
       </div>
     </section>
-  )
+  );
 }

@@ -3,6 +3,7 @@ import type { CaseStudyMeta } from '../types/casestudy';
 import {CSImageGroup, CSGrid,CSCard, CSSection, CSAudioButton, CSBlockquote } from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import ArrowIcon from '../components/ArrowIcon';
+import { useEffect } from 'react';
 
 
 export default function ComplianceManager() {
@@ -16,6 +17,22 @@ export default function ComplianceManager() {
     timeline: "",
     tags: []
   };
+
+  // --- DO NOT INDEX THIS PAGE ---
+  useEffect(() => {
+    // 1. Create the meta tag
+    const meta = document.createElement('meta');
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    
+    // 2. Add it to the <head>
+    document.head.appendChild(meta);
+
+    // 3. Cleanup: Remove it when you leave the page (so your other pages ARE indexed)
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
 
   return (
     <CaseStudyLayout meta={meta}>

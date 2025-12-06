@@ -4,7 +4,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="full-bleed-section-gradient">
+    <footer className="full-bleed-footer-container">
       <div className="footer-container">
       <div>
         <h4>Thanks for scrolling!</h4>
@@ -22,7 +22,7 @@ export default function Footer() {
           <h5>Get in touch</h5>
           <p><a className="footer-external-link" href="mailto:hello@dianelabenz.com">Email<ArrowIcon /></a></p>
           <p><a className="footer-external-link" href="https://www.linkedin.com/in/dianelabenz/">LinkedIn<ArrowIcon /></a></p>
-          <p><a className="footer-external-link" href="/assets/images/DianeLabenz_Resume_25.pdf">Resume<ArrowIcon /></a></p>
+          
         </div>
       </div>
       </div>

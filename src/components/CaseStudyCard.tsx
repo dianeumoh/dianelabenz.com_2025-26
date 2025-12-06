@@ -70,7 +70,11 @@ export default function CaseStudyCard() {
                         <p className="tag-primary">End-to-end design</p>
                         <p className="tag-primary">Product leadership & strategy</p>
                     </div>
-                    <a className="button-primary" href="/selected-works">
+                    <a 
+                        className="button-primary" 
+                        href="/data-security"
+                        onClick={(e) => handleNavClick(e as MouseEvent<HTMLAnchorElement>, '/data-security')}
+                    >
                      See the solution
                         <span className="material-symbols-outlined">arrow_right_alt</span>
                     </a>
