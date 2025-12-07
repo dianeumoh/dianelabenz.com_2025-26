@@ -1,8 +1,9 @@
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import type { CaseStudyMeta } from '../types/casestudy';
-import {CSImageGroup, CSGrid,CSCard, CSSection, CSAudioButton, CSBlockquote } from '../components/CaseStudyBlocks';
+import {CSImageGroup, CSGrid,CSCard, CSSection, CSAudioButton, CSBlockquote, CSBrowserFrame } from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import ArrowIcon from '../components/ArrowIcon';
+import PasswordGate from '../components/PasswordGate';
 import { useEffect } from 'react';
 
 
@@ -41,11 +42,13 @@ export default function ComplianceManager() {
       <div className="cs-hero-glow-wrapper">
         <AnimateOnScroll>
           <div className="container">
+            <CSBrowserFrame>
             <img
               src={meta.heroImage}
               alt="Google Cloud Compliance Interface"
               className="cs-hero-img cs-img-no-shadow"
             />
+            </CSBrowserFrame>
           </div>
         </AnimateOnScroll>
       </div>
@@ -151,6 +154,7 @@ export default function ComplianceManager() {
 />
 </AnimateOnScroll>
 
+<PasswordGate audioUrl="public/audio/compliance-manager-audio.m4a">
       <AnimateOnScroll>
         <CSSection>
           <h3>The challenge</h3>
@@ -565,7 +569,7 @@ I intentionally placed these two charts directly above the 'Tree Table' (the tur
             />
           </CSGrid>
         </AnimateOnScroll>
-  
+  </PasswordGate>
 
     </CaseStudyLayout>
   );

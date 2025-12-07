@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { MouseEvent } from 'react';
 import AnimateOnScroll from './AnimateOnScroll'
+import {CSBrowserFrame } from '../components/CaseStudyBlocks';
 
 export default function CaseStudyCard() {
     const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function CaseStudyCard() {
             <div className="case-study-card">
                 <div className="case-study-card-content">
                     <div className="case-study-card-logo">
-                        <img src="src/images/Google_Cloud_logo.png" alt="Google Cloud Logo" />
+                          <img src="src/images/Google_Cloud_logo.png" alt="Google Cloud Logo" />
                     </div>
                     <h3>
                         From zero-to-MVP: Unifying the compliance experience on Google Cloud
@@ -49,10 +50,12 @@ export default function CaseStudyCard() {
                     </a>
                 </div>
                 <div>
+                    <CSBrowserFrame>
                     <img
                         className="case-study-card-image"
                         src="src/images/ComplianceManager_home.png"
                         alt="Compliance Manager Homepage" />
+                    </CSBrowserFrame>
                 </div>
             </div>
             </AnimateOnScroll>
@@ -80,10 +83,12 @@ export default function CaseStudyCard() {
                     </a>
                 </div>
                 <div>
+                    <CSBrowserFrame>
                     <img
                         className="case-study-card-image"
                         src="src/images/DSPM_TTV_home.png"
                         alt="Data Security Posture Management Dashboard" />
+                    </CSBrowserFrame>
                 </div>
             </div>
             </AnimateOnScroll>

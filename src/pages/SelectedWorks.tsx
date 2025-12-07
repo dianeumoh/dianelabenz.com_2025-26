@@ -68,7 +68,7 @@ export default function SelectedWorks() {
                 <span className="tag-primary">Design</span>
                 <span className="tag-primary">Workshop facilitation</span>
               </div>
-              <p className="text-link">Dive into the details</p>
+              <a href="/wellness-dashboard" className="text-link">Dive into the details</a>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function SelectedWorks() {
             <img className="selected-works-card-image" src="src/images/opensanjose_selectedworks.png" alt="Open Disclosure San Jose Homepage" />
             <div className="selected-works-card-content">
               <p>Open Disclosure San Jose</p>
-              <h3>Making local election spending accessible to everyone </h3>
+              <h3>Making local election spending data accessible to everyone </h3>
               <div className="tag-primary-container">
                 <span className="tag-primary">Visual design</span>
                 <span className="tag-primary">End-to-end design</span>

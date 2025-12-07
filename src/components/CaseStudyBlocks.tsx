@@ -304,3 +304,25 @@ export function CSAudioButton({
     </section>
   );
 }
+
+// src/components/case-study/CaseStudyBlocks.tsx
+
+// --- BLOCK 10: Browser Frame Wrapper ---
+export function CSBrowserFrame({ 
+  children, 
+  className = "" 
+}: { 
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`cs-browser-frame ${className}`}>
+      
+      
+      {/* The Image Content */}
+      <div className="cs-browser-content">
+        {children}
+      </div>
+    </div>
+  );
+}

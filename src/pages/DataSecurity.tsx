@@ -1,5 +1,5 @@
 import CaseStudyLayout from '../components/CaseStudyLayout';
-import { CSImageGroup, CSGrid, CSCard, CSSection, CSAudioButton, CSBlockquote } from '../components/CaseStudyBlocks';
+import { CSImageGroup, CSGrid, CSCard, CSSection, CSAudioButton, CSBlockquote, CSBrowserFrame } from '../components/CaseStudyBlocks';
 import type { CaseStudyMeta } from '../types/casestudy';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import { useEffect } from 'react';
@@ -39,11 +39,13 @@ export default function DataSecurity() {
       <div className="cs-hero-glow-wrapper">
         <AnimateOnScroll>
           <div className="container">
+            <CSBrowserFrame>
             <img
               src={meta.heroImage}
               alt="Google Cloud Data Security Interface"
               className="cs-hero-img cs-img-no-shadow"
             />
+            </CSBrowserFrame>
           </div>
         </AnimateOnScroll>
       </div>
@@ -108,7 +110,7 @@ export default function DataSecurity() {
       <AnimateOnScroll>
         <CSSection>
           <CSAudioButton
-            audioUrl="public/audio/compliance-manager-audio.m4a"
+            audioUrl="public/audio/Designing_Google_Cloud_DSPM_for_Action.m4a"
             text="Listen to this case study"
           />
           <h3>Where we started</h3>
@@ -136,7 +138,7 @@ export default function DataSecurity() {
           <p><strong>While this sounded great on paper, I identified a glaring flaw in the strategy...</strong></p>
         </CSSection>
       </AnimateOnScroll>
-      <PasswordGate>
+      <PasswordGate audioUrl="public/audio/Designing_Google_Cloud_DSPM_for_Action.m4a">
       <AnimateOnScroll>
         <CSSection>
           <h3>The problem</h3>

@@ -1,11 +1,17 @@
 import React, { useState, useEffect, type ReactNode } from 'react';
+import { CSAudioButton } from '../components/CaseStudyBlocks'; // Adjust path if needed
 
-export default function PasswordGate({ children }: { children: ReactNode }) {
+// 1. Update the props type definition
+type PasswordGateProps = {
+  children: ReactNode;
+  audioUrl?: string; // Make it optional (?) in case some projects don't have audio
+};
+
+export default function PasswordGate({ children, audioUrl }: PasswordGateProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [inputVal, setInputVal] = useState('');
   const [error, setError] = useState(false);
 
-  // 1. Check Session Storage on load so they stay logged in during the visit
   useEffect(() => {
     const sessionAuth = sessionStorage.getItem('case-study-unlocked');
     if (sessionAuth === 'true') {
@@ -15,9 +21,6 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // 2. Simple Password Logic (Replace 'design2025' with your password)
-    // You can also use an environment variable here: import.meta.env.VITE_PASSWORD
     if (inputVal.toLowerCase() === 'atlas5934') {
       setIsUnlocked(true);
       setError(false);
@@ -27,26 +30,24 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
     }
   };
 
-  // 3. If unlocked, show content normally
   if (isUnlocked) {
     return <>{children}</>;
   }
 
-  // 4. If locked, show the "Teaser" view
   return (
     <div className="password-gate-wrapper">
       
-      {/* The content is rendered but cut off visually */}
       <div className="password-gate-content-preview">
         {children}
       </div>
 
-      {/* The Gradient Overlay & Form */}
       <div className="password-gate-overlay">
         <div className="password-gate-card">
           <h3>Enter password to continue reading</h3>
-          <p>This case study contains sensitive/NDA information.</p>
-          <p>Have my resume handy? You can find it there. <br/>Or <a className="text-link" href="mailto:dianelabenz3@gmail.com">contact me</a> directly to request access.</p>
+          <p>
+            Have my resume handy? You can find it there. <br/>
+            Or <a className="text-link" href="mailto:dianelabenz3@gmail.com">contact me</a> directly to request access.
+          </p>
           
           <form onSubmit={handleSubmit} className="password-form">
             <input 
@@ -59,9 +60,23 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
             <button type="submit" className="button-primary">
               Unlock
             </button>
+            
+            {error && <span className="password-error">Incorrect password</span>}
+            
+            {/* 2. Conditionally render the audio section ONLY if a URL is provided */}
+            {audioUrl && (
+              <>
+                <p><span className="separator">or</span></p>
+                <div className="audio-button-center">
+                  <CSAudioButton
+                    audioUrl={audioUrl} // <--- Pass the dynamic prop here
+                    text="Listen to this case study"
+                  />
+                </div>
+              </>
+            )}
+            
           </form>
-          
-          {error && <span className="password-error">Incorrect password</span>}
         </div>
       </div>
     </div>
