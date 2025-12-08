@@ -5,9 +5,9 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 
 const profileImages = [
-  { src: 'src/images/Diane_About_1.jpg', alt: 'Diane Labenz' },
-  { src: 'src/images/Diane_About_2.jpeg', alt: 'Diane Labenz' },
-  { src: 'src/images/AboutDiane_Louvre.jpg', alt: 'Diane Labenz' },
+  { src: 'src/images/Diane_about_1.JPG', alt: 'Diane Labenz' },
+  { src: 'src/images/Diane_about_2.jpeg', alt: 'Diane Labenz' },
+  { src: 'src/images/AboutDiane_Louvre.JPG', alt: 'Diane Labenz' },
   { src: 'src/images/AboutDiane_fam.jpeg', alt: 'Diane Labenz' },
 ];
 
