@@ -1,6 +1,6 @@
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import type { CaseStudyMeta } from '../types/casestudy';
-import { CSSection, CSAudioButton, CSBrowserFrame, CSGrid, CSCard, CSImageGroup } from '../components/CaseStudyBlocks';
+import { CSSection, CSBrowserFrame, CSGrid, CSCard, CSImageGroup } from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
 import ArrowIcon from '../components/ArrowIcon';
 
