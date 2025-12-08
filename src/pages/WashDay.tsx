@@ -1,9 +1,8 @@
 import { GlassPhoneSlider } from '../components/GlassPhoneSlider';
 import CaseStudyLayout from '../components/CaseStudyLayout';
 import type { CaseStudyMeta } from '../types/casestudy';
-import { CSSection, CSAudioButton, CSBrowserFrame, CSGrid, CSCard, CSImageGroup, CSBlockquote } from '../components/CaseStudyBlocks';
+import { CSBrowserFrame} from '../components/CaseStudyBlocks';
 import AnimateOnScroll from '../components/AnimateOnScroll';
-import ArrowIcon from '../components/ArrowIcon';
 
 
 export default function WashDay() {
