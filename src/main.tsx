@@ -11,6 +11,9 @@ import Contact from './pages/Contact.tsx'
 import ComplianceManager from './pages/ComplianceManager.tsx'
 import DataSecurity from './pages/DataSecurity.tsx'
 import WellnessDashboard from './pages/WellnessDashboard.tsx'
+import AuthZ from './pages/AuthZ.tsx'
+import OpenDisclosure from './pages/OpenDisclosure.tsx'
+import WashDay from './pages/WashDay.tsx'
 import NotFound from './pages/NotFound.tsx'
 
 const router = createBrowserRouter([
@@ -25,6 +28,9 @@ const router = createBrowserRouter([
       { path: 'compliance-manager', element: <ComplianceManager /> },
       { path: 'data-security', element: <DataSecurity /> },
       { path: 'wellness-dashboard', element: <WellnessDashboard /> },
+      { path: 'authz', element: <AuthZ /> },
+      { path: 'open-disclosure', element: <OpenDisclosure /> },
+      { path: 'wash-day', element: <WashDay /> },
       { path: '*', element: <NotFound /> }, // Catch-all route for 404 pages
     ],
   },

@@ -1914,7 +1914,7 @@ SPECIFIC CASE STUDY STYLES
 }
 
 .impact-card::before {
-  content: "";
+  content: "✦";
   position: absolute;
   
   inset: -15px; 
@@ -1948,19 +1948,25 @@ SPECIFIC CASE STUDY STYLES
 }
 
 .impact-card ul {
-  padding-left: 1.5rem;
-  margin: 0;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+ list-style: none;
+ padding:0;
+ margin:0;
 }
 
 .impact-card li {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  text-indent: -1rem;
-  padding-left: 1.5rem;
-  list-style-position: inside;
-  list-style-type: disc;
+ display:block;
+ position:relative;
+ padding-left: 3rem;
+ margin-bottom: 1rem;
+ line-height:1.5;
+}
+
+.impact-card li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top:0;
+  color: var(--color-content-primary);
 }
 
 /* Right Column: The Metadata Stack */
@@ -2015,15 +2021,25 @@ max-width: 60ch;
 }
 .cs-text-container ul {
   list-style-position: outside;
+  list-style-type: "✦";
+  padding-left: 1.5rem;
+  margin-left: 1rem;
 }
 .cs-text-container ul li {
   margin-bottom: 1rem;
   line-height: 1.5;
+  padding-left: 0.75rem;
 }
+
 .cs-text-container ul li::before {
-  content: "•";
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
 }
+
+.cs-text-container li::marker {
+ color: var(--color-brand-accent-primary);
+}
+
+
 /* Case Study Image Gallery */
 /* =====================================
    CS IMAGE GROUP (Gallery)
@@ -2604,6 +2620,74 @@ max-width: 60ch;
   min-width: 0;
   width: auto;
 }
+
+/* =====================================
+   CS SCROLL NAV (Floating Widget)
+   ===================================== */
+
+   .cs-scroll-nav {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: 100; 
+    
+    /* Layout: Vertical Pill */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    border: 1px solid var(--color-glass-border);
+    border-radius: 50rem; /* Pill shape */
+    
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    
+    /* Animation State: Hidden by default */
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Prevent clicks when hidden */
+    transition: all 0.3s ease;
+  }
+  
+  /* Visible State */
+  .cs-scroll-nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  
+  /* The Buttons */
+  .scroll-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    color: var(--color-content-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  
+  .scroll-btn:hover {
+    color: var(--color-brand-accent-primary); /* Purple hover */
+    transform: scale(1.1);
+  }
+  
+  .scroll-btn svg {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  /* The Divider */
+  .scroll-divider {
+    width: 60%;
+    height: 1px;
+    background-color: var(--color-content-tertiary);
+    opacity: 0.2;
+  }
 
 /* =====================================
    FOOTER STYLES

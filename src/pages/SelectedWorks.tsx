@@ -42,7 +42,7 @@ export default function SelectedWorks() {
           </div>
         </div>
         </AnimateOnScroll>
-        <h2 className="selected-works-section-subtitle">2022 - 2023</h2>
+        <h2 className="selected-works-section-subtitle">2021 - 2023</h2>
         <AnimateOnScroll>
         <div className="selected-works-grid">
           <div className="selected-works-card">
@@ -55,7 +55,7 @@ export default function SelectedWorks() {
                 <span className="tag-primary">User research</span>
                 <span className="tag-primary">End-to-end design</span>
               </div>
-              <p className="text-link">Get the scoop</p>
+              <a href="/authz" className="text-link">Get the scoop</a>
             </div>
           </div>
           <div className="selected-works-card">
@@ -85,7 +85,7 @@ export default function SelectedWorks() {
                 <span className="tag-primary">End-to-end design</span>
                 <span className="tag-primary">Branding</span>
               </div>
-              <p className="text-link">See the process</p>
+              <a href="/open-disclosure" className="text-link">See the website</a>
             </div>
           </div>
           <div className="selected-works-card">
@@ -98,7 +98,7 @@ export default function SelectedWorks() {
                 <span className="tag-primary">End-to-end design</span>
                 <span className="tag-primary">Side project</span>
               </div>
-              <p className="text-link">Coming soon!</p>
+              <a href="/wash-day" className="text-link">Coming soon!</a>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 // src/components/case-study/CaseStudyLayout.tsx
 import type { ReactNode } from 'react';
 import type { CaseStudyMeta } from '../types/casestudy';
+import { CSScrollNav } from './CaseStudyBlocks';
 
 type Props = {
   meta: CaseStudyMeta;
@@ -22,6 +23,7 @@ export default function CaseStudyLayout({ children }: Props) {
              {/* ... nav ... */}
            </nav>
         </div>
+        <CSScrollNav />
       </main>
     </>
   );

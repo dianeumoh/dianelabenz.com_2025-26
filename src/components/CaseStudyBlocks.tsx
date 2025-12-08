@@ -326,3 +326,53 @@ export function CSBrowserFrame({
     </div>
   );
 }
+
+// --- BLOCK 11: Floating Scroll Navigation ---
+export function CSScrollNav() {
+  const [showNav, setShowNav] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show the widget after scrolling down 300px
+      if (window.scrollY > 300) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
+  return (
+    <div className={`cs-scroll-nav ${showNav ? 'visible' : ''}`}>
+      
+      {/* Scroll to Top */}
+      <button onClick={scrollToTop} className="scroll-btn" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </button>
+
+      {/* Divider */}
+      <div className="scroll-divider"></div>
+
+      {/* Scroll to Bottom */}
+      <button onClick={scrollToBottom} className="scroll-btn" aria-label="Scroll to bottom">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+
+    </div>
+  );
+} 
