@@ -124,7 +124,7 @@ export default function ComplianceManager() {
       <AnimateOnScroll>
         <CSSection>
         <CSAudioButton 
-  audioUrl="public/audio/compliance-manager-audio.m4a" 
+  audioUrl="audio/compliance-manager-audio.m4a" 
   text="Listen to this case study" 
 />
           <h3>Background</h3>
@@ -154,7 +154,7 @@ export default function ComplianceManager() {
 />
 </AnimateOnScroll>
 
-<PasswordGate audioUrl="public/audio/compliance-manager-audio.m4a">
+<PasswordGate audioUrl="audio/compliance-manager-audio.m4a">
       <AnimateOnScroll>
         <CSSection>
           <h3>The challenge</h3>
@@ -219,7 +219,7 @@ export default function ComplianceManager() {
     <p>The presentation served as the official catalyst for the "Unified Compliance" initiative, shifting focus to building a fully integrated experience.</p>
     <CSCard
       variant="sketchy"
-      icon={<img src="src/images/knot.png" alt="Tangled knot" />}
+      icon={<img src="src/images/Knot.png" alt="Tangled knot" />}
       title="The messy middle"
       description="Alignment didn't happen overnight. It took weeks of continued discussion after the design review—engineering feasibility assessments, political negotiation between teams, and clarifying the phased deprecation strategy. The presentation became the catalyst for the 'Unified Compliance' initiative, shifting the focus from just moving things around to building a fully integrated experience."
     />
@@ -542,7 +542,7 @@ I intentionally placed these two charts directly above the 'Tree Table' (the tur
             </CSSection>
         </AnimateOnScroll>
         <AnimateOnScroll>
-          <CSSection><h3>Learnings & retrospect</h3>
+          <CSSection><h3>Learnings & retrospective</h3>
             <h2>Sprints compressed months of alignment into weeks. Next time: advocate earlier for critical technical needs.</h2>
             
             </CSSection>

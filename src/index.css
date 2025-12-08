@@ -3118,6 +3118,17 @@ MEDIA QUERIES (Responsive)
 }
 
 @media (max-width: 768px) {
+  /* Scale all font sizes by another 25% for mobile (75% of tablet = 56.25% of desktop) */
+  html {
+    font-size: 35.15625%; /* 46.875% * 0.75 = 35.15625% */
+  }
+
+  /* Add 16px left and right padding for mobile */
+  body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   /* Hero Section (Home.tsx) */
   .hero-section {
     flex-direction: column;

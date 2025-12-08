@@ -327,7 +327,7 @@ export default function WellnessDashboard() {
       </AnimateOnScroll>
       <AnimateOnScroll>
           <CSSection>
-            <h3>Learnings & retrospect</h3>
+            <h3>Learnings & retrospective</h3>
             <h2>Harnassing the power of democratizing design</h2>
             <p>Kicking off this project with a 4-day design thinking workshop was crucial for building a unified language around customer needs and business goals. It solidified the importance of democratizing design and encouraging non-designers to participate in design thinking methods and tools to help the team make wiser product decisions.</p>
             <img src="src/images/Fatima_Shoutout.png" alt="Lovely working with you Diane, love your flexibility, creativity, and work ethic!" />

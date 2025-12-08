@@ -489,7 +489,7 @@ or grant their users too many permissions."
             </AnimateOnScroll>
             <AnimateOnScroll>
           <CSSection>
-            <h3>Learnings & retrospect</h3>
+            <h3>Learnings & retrospective</h3>
             <h2>Challenging assumptions early shifted our investment strategy</h2>
             <p>During the design process, I collaborated heavily with my awesome design team, PM, and feature architects to ensure I was creating an improved experience and not designing in a silo.</p>
           </CSSection>

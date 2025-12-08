@@ -17,7 +17,7 @@ export default function FunFacts() {
                 <div className="fun-fact-card">
                     <div className="fun-fact-card-image">
                         <video
-                            src="src/images/Atlas_beach.mp4"
+                            src="src/images/atlas_beach.mp4"
                             controls
                             loop
                             muted

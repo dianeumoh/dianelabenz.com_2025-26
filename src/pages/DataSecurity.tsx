@@ -86,7 +86,7 @@ export default function DataSecurity() {
             <ul>
               <li><strong>Redirected misaligned product strategy</strong> with a strategic workshop defining 30+ user-centered initiatives</li>
               <li><strong>Shipped validated MVP in GA launch</strong></li>
-              <li><strong>Reduced time-to-value</strong> from x days to x hours</li>
+              <li><strong>Reduced time-to-value</strong> from days to hours</li>
             </ul>
           </div>
 
@@ -110,7 +110,7 @@ export default function DataSecurity() {
       <AnimateOnScroll>
         <CSSection>
           <CSAudioButton
-            audioUrl="public/audio/Designing_Google_Cloud_DSPM_for_Action.m4a"
+            audioUrl="audio/Designing_Google_Cloud_DSPM_for_Action.m4a"
             text="Listen to this case study"
           />
           <h3>Where we started</h3>
@@ -138,7 +138,7 @@ export default function DataSecurity() {
           <p><strong>While this sounded great on paper, I identified a glaring flaw in the strategy...</strong></p>
         </CSSection>
       </AnimateOnScroll>
-      <PasswordGate audioUrl="public/audio/Designing_Google_Cloud_DSPM_for_Action.m4a">
+      <PasswordGate audioUrl="audio/Designing_Google_Cloud_DSPM_for_Action.m4a">
       <AnimateOnScroll>
         <CSSection>
           <h3>The problem</h3>
@@ -562,7 +562,7 @@ export default function DataSecurity() {
         </AnimateOnScroll>
         <AnimateOnScroll>
           <CSSection>
-            <h3>Learnings & retrospect</h3>
+            <h3>Learnings & retrospective</h3>
             <h2>A designer's role is to be the connective tissue</h2>
           </CSSection>
         </AnimateOnScroll>
