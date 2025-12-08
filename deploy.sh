@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# Invoke by typing either:
+#   bash deploy.sh
+# or
+#   ./deploy.sh
+
 # Build the vite website
 npm run build
 
