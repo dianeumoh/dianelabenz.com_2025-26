@@ -46,6 +46,7 @@ export default function ExtraCurricularsCard() {
       <p>
        Wash Day is a mobile app (and personal side project) that fosters knowledge about natural hair care by generating personalized hair care routines based on the user's hair type and goals.
       </p>
+      <p>Check out the <a href="/wash-day" className="text-link">the project</a></p>
     </div>
   );
 

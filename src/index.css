@@ -749,6 +749,183 @@ REUSABLE COMPONENTS
   font-weight: var(--font-weight-regular);
 }
 
+/* =====================================
+   GLASS PHONE SLIDER (REVISED)
+   ===================================== */
+
+/* 1. Container to manage overall spacing */
+.glass-phone-slider-container {
+  position: relative;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+/* 2. Swiper Sizing */
+.phone-swiper {
+  width: 100%;
+  /* Adjust this height to fit your aspect ratio needs */
+  height: 650px; 
+  padding-top: 2rem; /* Give room for the notch to pop up */
+  padding-bottom: 2rem;
+}
+
+/* 3. Slide sizing */
+.phone-swiper .swiper-slide {
+  width: 300px; /* Fixed width for phone aspect ratio */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ensure slides don't overlap incorrectly during transition */
+  z-index: 1; 
+}
+.phone-swiper .swiper-slide-active {
+  z-index: 10; /* Active slide is always on top */
+}
+
+/* =====================================
+   THE PHONE FRAME STYLING
+   ===================================== */
+
+/* 4. Base State (The Phone Container) */
+.phone-slide-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 3.5rem; /* Match screen radius + border width */
+  
+  /* Use Flexbox to stack Notch and Screen vertically */
+  display: flex;
+  flex-direction: column;
+  
+  /* Initial state: blurred, faded, smaller */
+  filter: blur(6px) grayscale(40%);
+  opacity: 0.5;
+  transform: scale(0.85);
+  
+  /* Smooth transition for all properties */
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Phone body color */
+  background-color: var(--color-glass-bg); 
+  
+  /* Ensure border doesn't spill over */
+  overflow: hidden;
+}
+
+
+/* --- The Screen --- */
+.phone-screen {
+  flex-grow: 1; /* Fills the rest of the phone height */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* Match frame radius at the bottom */
+  border-bottom-left-radius: 3.5rem;
+  border-bottom-right-radius: 3.5rem;
+  /* Slightly smaller radius at top to meet notch cleanly */
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.phone-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills the screen without stretching */
+}
+
+/* 5. Active State (The Center Glass Phone) */
+.swiper-slide-active .phone-slide-frame {
+  filter: blur(0) grayscale(0%);
+  opacity: 1;
+  transform: scale(1);
+  
+  /* --- GLASS IPHONE EFFECT --- */
+  /* A. The Glass Border */
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  
+  /* B. Shadows for depth and glow */
+  box-shadow: 
+    /* Inner white glow at the edges */
+    inset 0 0 15px rgba(255, 255, 255, 0.3),
+    /* Soft, deep outer shadow */
+    0 30px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* =====================================
+   CUSTOM NAVIGATION ARROWS (Refined)
+   ===================================== */
+
+/* Shared Styles for Next/Prev Buttons */
+.custom-swiper-next,
+.custom-swiper-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50; /* Above the sliders */
+  
+  /* --- Circle Shape --- */
+  width: 44px;  /* Smaller than before */
+  height: 44px;
+  border-radius: 50%;
+  
+  /* --- Glass / Dark Material --- */
+  background-color: rgba(20, 20, 20, 0.6); /* Dark semi-transparent */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle ring */
+  
+  /* --- Content Alignment --- */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white; /* Icon color */
+  
+  /* Reset default button styles */
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+
+/* --- Specific Positioning --- */
+/* Adjust the % to pull them closer/further from center */
+.custom-swiper-prev {
+  left: 32%; /* Moves closer to center (was 28%) */
+}
+
+.custom-swiper-next {
+  right: 32%; /* Moves closer to center */
+}
+
+/* --- Hover Effects --- */
+.custom-swiper-next:hover,
+.custom-swiper-prev:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+  transform: translateY(-50%) scale(1.1); /* Slight pop */
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Icon Sizing (SVG or FontAwesome) --- */
+.custom-swiper-next svg,
+.custom-swiper-prev svg,
+.custom-swiper-next i,
+.custom-swiper-prev i {
+  /* This controls the actual icon size inside the circle */
+  width: 12px;
+  height: auto;
+  font-size: 1.4rem; /* For FontAwesome */
+}
+
+/* Mobile: Hide arrows on small screens */
+@media (max-width: 900px) {
+  .custom-swiper-next,
+  .custom-swiper-prev {
+    display: none;
+  }
+}
 
 /* =====================================
 REUSABLE COMPONENTS (Additions)
