@@ -53,7 +53,7 @@ export default function CaseStudyCard() {
                     <CSBrowserFrame>
                     <img
                         className="case-study-card-image"
-                        src="src/images/ComplianceManager_home.png"
+                        src="src/images/ComplianceManager_Home.png"
                         alt="Compliance Manager Homepage" />
                     </CSBrowserFrame>
                 </div>
