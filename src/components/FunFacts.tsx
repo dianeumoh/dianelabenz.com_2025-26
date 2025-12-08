@@ -4,20 +4,20 @@ export default function FunFacts() {
             <div className="fun-facts-grid">
                 <div className="fun-fact-card">
                     <div className="fun-fact-card-image">
-                        <img src="src/images/Diane_tennis.jpg" alt="Tennis" />
+                        <img src="src/images/Diane_tennis.JPG" alt="Tennis" />
                     </div>
                     <p>I'm an avid tennis player with dreams to one day make it to the US Open ;)</p>
                 </div>
                 <div className="fun-fact-card">
                     <div className="fun-fact-card-image">
-                        <img src="src/images/diane_enfj.png" alt="Myers-Briggs ENFJ personality type visualization" /> 
+                        <img src="src/images/diane_enfj.png" alt="Myers-Briggs ENFJ personality type visualization" />
                     </div>
                     <p>I'm a Myers-Briggs <a className="text-link" href="https://www.16personalities.com/enfjs-at-work" target="_blank">ENFJ</a></p>
                 </div>
                 <div className="fun-fact-card">
                     <div className="fun-fact-card-image">
-                        <video 
-                            src="src/images/Atlas_beach.mp4" 
+                        <video
+                            src="src/images/Atlas_beach.mp4"
                             controls
                             loop
                             muted
