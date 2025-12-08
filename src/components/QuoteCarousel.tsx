@@ -50,15 +50,11 @@ export default function QuoteCarousel() {
       loop={true}
       pagination={{ clickable: true }}
       spaceBetween={30}
-      slidesPerView={2}
+      slidesPerView={1}
       breakpoints={{
-        // When window width is >= 500px, show 2 slides
-        500: {
+        // When window width is >= 1700px, show 2 slides
+        1700: {
           slidesPerView: 2,
-        },
-        // When window width is < 500px, show 1 slide
-        0: {
-          slidesPerView: 1,
         },
       }}
     >

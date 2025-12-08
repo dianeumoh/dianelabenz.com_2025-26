@@ -21,7 +21,7 @@ export default function PasswordGate({ children, audioUrl }: PasswordGateProps) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputVal.toLowerCase() === 'atlas5934') {
+    if (inputVal.toLowerCase() === 'atlas') {
       setIsUnlocked(true);
       setError(false);
       sessionStorage.setItem('case-study-unlocked', 'true');
