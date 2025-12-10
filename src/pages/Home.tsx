@@ -34,39 +34,39 @@ export default function Home() {
       {/* Marquee section here */}
       <Marquee />
       <AnimateOnScroll>
-      <section aria-labelledby="featured-projects" className="featured-projects-section">
-        <CaseStudyCard />
-        <div>
-          <h4>Looking for more?</h4>
-        </div>
-        <a className="button-primary" href="/selected-works">
-          View selected works
-          <span className="material-symbols-outlined">arrow_right_alt</span>
-        </a>
-      </section>
+        <section aria-labelledby="featured-projects" className="featured-projects-section">
+          <CaseStudyCard />
+          <div>
+            <h4>Looking for more?</h4>
+          </div>
+          <a className="button-primary" href="/selected-works">
+            View selected works
+            <span className="material-symbols-outlined">arrow_right_alt</span>
+          </a>
+        </section>
       </AnimateOnScroll>
       <AnimateOnScroll>
-      <section aria-labelledby="high-fives" className="high-fives-section-full-bleed">
-        <div className="high-fives-section">
-          <div className="high-fives-copy">
-            <h2>A few of my high fives</h2>
-            <p>A glimpse into what it's like to work with me</p>
+        <section aria-labelledby="high-fives" className="high-fives-section-full-bleed">
+          <div className="high-fives-section">
+            <div className="high-fives-copy">
+              <h2>A few of my high fives</h2>
+              <p>A glimpse into what it's like to work with me</p>
+            </div>
+            <div className="carousel-wrapper">
+              <QuoteCarousel />
+            </div>
           </div>
-          <div className="carousel-wrapper">
-            <QuoteCarousel />
-          </div>
-        </div>
-      </section>
+        </section>
       </AnimateOnScroll>
       <AnimateOnScroll>
-      <section aria-labelledby="extra-curriculars" className="extra-curriculars-section-full-bleed">
-        <div className="extra-curriculars-section-header">
-          <h2>Extra curriculars</h2>
-        </div>
-    <div>
-      <ExtraCurricularsCard />
-    </div>
-      </section>
+        <section aria-labelledby="extra-curriculars" className="extra-curriculars-section-full-bleed">
+          <div className="extra-curriculars-section-header">
+            <h2>Extra curriculars</h2>
+          </div>
+          <div>
+            <ExtraCurricularsCard />
+          </div>
+        </section>
       </AnimateOnScroll>
     </>
   )

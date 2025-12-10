@@ -1364,13 +1364,13 @@ LAYOUTS AND PAGE SECTIONS
 }
 
 .hero-section-text {
-  width: 50%
+  flex: 1;
 }
 
 .profile-photo-wrapper {
   position: relative;
   display: inline-block;
-  width: 50%
+  flex: 1;
 }
 
 .profile-photo {
