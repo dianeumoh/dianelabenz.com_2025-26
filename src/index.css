@@ -2,6 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -560,7 +566,7 @@ REUSABLE COMPONENTS
   width: 80%;
   max-width: 30rem;
   height: 100vh;
-  padding: 8rem 3rem 3rem 3rem;
+  padding: 8rem 3rem calc(3rem + env(safe-area-inset-bottom)) 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -618,8 +624,8 @@ REUSABLE COMPONENTS
 }
 
 .mobile-menu-toggle {
-  margin-top: auto;
   padding-top: 2rem;
+  margin-top: 1rem;
   border-top: 0.1rem solid var(--color-glass-border);
   display: flex;
   justify-content: flex-start;
@@ -2679,7 +2685,7 @@ max-width: 60ch;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 100;
     
     
     /* Starts transparent, fades to solid background color */
@@ -2693,8 +2699,9 @@ max-width: 60ch;
     /* Center the lock card */
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Push it towards the bottom of the fade */
+    align-items: center; 
     padding-bottom: 6rem;
+    padding-top: 10rem;
   }
   
   /* 3. The Lock Card */
@@ -2705,9 +2712,10 @@ max-width: 60ch;
     padding: 3rem;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    max-width: 50rem;
-    width: 100%;
+    max-width: 40rem;
+    width: 90%;
     height: 100%;
+    margin: 0 auto;
   }
   
 
@@ -3118,17 +3126,6 @@ MEDIA QUERIES (Responsive)
 }
 
 @media (max-width: 768px) {
-  /* Scale all font sizes by another 25% for mobile (75% of tablet = 56.25% of desktop) */
-  html {
-    font-size: 35.15625%; /* 46.875% * 0.75 = 35.15625% */
-  }
-
-  /* Add 16px left and right padding for mobile */
-  body {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
   /* Hero Section (Home.tsx) */
   .hero-section {
     flex-direction: column;
@@ -3296,6 +3293,90 @@ MEDIA QUERIES (Responsive)
   .footer-copyright-section .divider {
     width: 100%;
   }
+}
+
+@media (max-width: 600px) {
+  .password-gate-content-preview {
+    min-height: 80vh; /* Use Viewport Height instead of pixels */
+  }
+  
+  .password-gate-overlay {
+     padding-top: 12rem; /* Extra clearance for mobile headers */
+  }
+
+  h1, .h1 {
+    font-size: 3.6rem; 
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  h2, .h2 {
+    font-size: 2.8rem; /* Adjust down from desktop (~3.5-4rem) */
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  /* FIX: Allow the Greeting Pill to shrink */
+  .greeting-text {
+    min-width: auto;  /* Remove the 18rem constraint */
+    min-height: auto; /* Remove the 8rem constraint */
+    
+    /* Make padding proportionate to the smaller text */
+    padding: 0.5rem 1.5rem; 
+    
+    /* Ensure the pill aligns with the "I'm Diane" text */
+    vertical-align: middle;
+    
+    /* Optional: If the text inside the pill is an H1, 
+       you might need to ensure it inherits the new smaller size, 
+       or set it explicitly here */
+    font-size: 3.6rem; 
+  }
+  
+  /* Ensure the wrapper allows wrapping if needed (optional) */
+  .greeting-wrapper {
+    display: inline-flex; /* Keep it inline flex */
+    flex-wrap: wrap;      /* Allow wrapping if screen is VERY tiny */
+    gap: 0.5rem;
+  }
+
+  .case-study-card-content h3 {
+    font-size: 2.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .button-primary {
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+  }
+
+  .tag-primary {
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+  
+  }
+  .case-study-card-logo {
+    width: 60%;
+    max-width: 80%;
+  }
+
+  .extra-curriculars-card-content h3 {
+    font-size: 2.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+  /*Case study styles */
+  .cs-title {
+    font-size: 3.6rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+  .cs-intro-text{
+    font-size: 2.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
 }
 
 /* Small mobile screens (below 500px) */
