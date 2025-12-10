@@ -45,7 +45,7 @@ export default function PasswordGate({ children, audioUrl }: PasswordGateProps) 
         <div className="password-gate-card">
           <h3>Enter password to continue reading</h3>
           <p>
-            Have my resume handy? You can find it there. <br/>
+            Have my resume handy? You can find it there.
             Or <a className="text-link" href="mailto:dianelabenz3@gmail.com">contact me</a> directly to request access.
           </p>
           

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 
 // The list of words you want to cycle through
-const GREETINGS = ['Ciao!', 'Hello!', 'Mököm!','Bonjour!', 'Hola!', '안녕!','Nǐ hǎo!'];
+const GREETINGS = ['Ciao!', 'Hello!', 'Mököm!', 'Bonjour!', 'Hola!', '안녕!', 'Nǐ hǎo!'];
 const TYPING_SPEED = 120; // ms per character (slower is more obvious)
 const PAUSE_DURATION = 2000; // 2 seconds after typing
 

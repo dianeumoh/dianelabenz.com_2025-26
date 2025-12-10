@@ -106,13 +106,18 @@ export default function DataSecurity() {
           </aside>
         </div>
       </div>
-
       <AnimateOnScroll>
         <CSSection>
-          <CSAudioButton
+        <CSAudioButton
             audioUrl="audio/Designing_Google_Cloud_DSPM_for_Action.m4a"
             text="Listen to this case study"
           />
+         
+        </CSSection>
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <CSSection>
           <h3>Where we started</h3>
           <h2>Data Security Posture Management had a day 0 problem that was hurting adoption</h2>
           <p>Google Cloud's <a className="text-link" href="https://cloud.google.com/data-security-posture-management" target="_blank">Data Security Posture Management (DSPM)</a> service helps security and compliance teams understand where their sensitive data is and protect it from being accidentally exposed or stolen.</p>

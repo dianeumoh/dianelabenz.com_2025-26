@@ -120,13 +120,18 @@ export default function ComplianceManager() {
           </aside>
         </div>
       </div>
-
       <AnimateOnScroll>
         <CSSection>
         <CSAudioButton 
   audioUrl="audio/compliance-manager-audio.m4a" 
   text="Listen to this case study" 
 />
+        </CSSection>
+      </AnimateOnScroll>
+
+      <AnimateOnScroll>
+        <CSSection>
+        
           <h3>Background</h3>
           <h2>I was tasked to lead a compliance integration effort in the absence of PRDs</h2>
           <p>Organizations using Google Cloud must meet complex compliance requirements (CIS, HIPAA, GDPR) to secure user data, but the compliance experience was fragmented across two separate products, <a href="https://cloud.google.com/assured-workloads" target="_blank" className="text-link">Assured Workloads</a> and <a href="https://cloud.google.com/security-command-center" target="_blank" className="text-link">Security Command Center</a> (SCC), making it nearly impossible for DevOps and GRC teams to get a unified view of their compliance status.</p>

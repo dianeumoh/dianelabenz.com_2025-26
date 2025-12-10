@@ -9,8 +9,7 @@ export default function WashDay() {
     const meta: CaseStudyMeta = {
         title: "Wash Day",
         subtitle: "Building a personalized hair care platform from the ground up.", // Fallback for SEO
-        heroImage: "/src/images/washday_cs_hero.png", // Using available wellness image
-        // We are NOT passing role/team/tags here because we will render them manually below
+        heroImage: "/src/images/washday_cs_hero.png", 
         role: "",
         team: [],
         timeline: "",
@@ -49,7 +48,7 @@ export default function WashDay() {
                             <img
                                 src={meta.heroImage}
                                 alt="Wash Day Hero"
-                                className="cs-hero-img cs-img-no-shadow"
+                                className="cs-hero-image cs-hero-image-mobile cs-img-no-shadow"
                             />
                         </CSBrowserFrame>
                     </div>
@@ -57,6 +56,7 @@ export default function WashDay() {
             </div>
 {/* --- 2. HEADER BLOCK --- */}
 <AnimateOnScroll>
+    <div className="container">
                     <div className="cs-header-block">
                         <h1 className="cs-title">
                         Building a personalized hair care platform from the ground up
@@ -75,6 +75,7 @@ export default function WashDay() {
                         <p className="cs-intro-text">
                             Wash Day is a mobile app and my personal side project that fosters knowledge about natural hair care by generating personalized hair care routines based on the user's hair type and goals.           </p>
 
+                    </div>
                     </div>
                 </AnimateOnScroll>
                 

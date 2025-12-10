@@ -5,6 +5,8 @@
 # or
 #   ./deploy.sh
 
+set -e
+
 # Build the vite website
 npm run build
 

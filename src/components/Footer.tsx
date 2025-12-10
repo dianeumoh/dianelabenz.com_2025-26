@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
         <div>
           <h5>Get in touch</h5>
-          <p><a className="footer-external-link" href="mailto:hello@dianelabenz.com">Email<ArrowIcon /></a></p>
+          <p><a className="footer-external-link" href="mailto:dianelabenz3@gmail.com">Email<ArrowIcon /></a></p>
           <p><a className="footer-external-link" href="https://www.linkedin.com/in/dianelabenz/">LinkedIn<ArrowIcon /></a></p>
           
         </div>
