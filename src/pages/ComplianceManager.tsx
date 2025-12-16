@@ -506,10 +506,12 @@ export default function ComplianceManager() {
           </CSSection>
         </AnimateOnScroll>
         <AnimateOnScroll>
-          <CSSection><p>This led to our final validated solution: two charts.
+          <CSSection>
+            <p>This led to our final validated solution: two charts.
 First, 'Controls Passing', to give users their 'point-in-time' status.
 Second, 'Controls Passing Over Time', to build trust and show that their remediation efforts were working.
-I intentionally placed these two charts directly above the 'Tree Table' (the turn-by-turn directions). This created the perfect, logical flow: users could immediately see their high-level status, then dive into the directions to take action.</p></CSSection>
+I intentionally placed these two charts directly above the 'Tree Table' (the turn-by-turn directions). This created the perfect, logical flow: users could immediately see their high-level status, then dive into the directions to take action.</p>
+</CSSection>
         </AnimateOnScroll>
         <AnimateOnScroll>
           <CSImageGroup
